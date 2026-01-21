@@ -76,6 +76,29 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
     }
   }
 
+  Future<void> loadLocalUsers() async {
+    if (isClosed) return;
+
+    try {
+      final allLocalUsers = await userRepository.getLocalUsers();
+
+      if (!isClosed) {
+        final filtered = _filterUsers(allLocalUsers, state.searchQuery);
+        emit(
+          state.copyWith(
+            users: allLocalUsers,
+            filteredUsers: filtered,
+            isLoading: false,
+          ),
+        );
+      }
+    } catch (e) {
+      if (!isClosed) {
+        emit(state.copyWith(error: e.toString()));
+      }
+    }
+  }
+
   Future<void> deleteAllUsers() async {
     if (isClosed) return;
 

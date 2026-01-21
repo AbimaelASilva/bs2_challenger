@@ -116,9 +116,14 @@ class _HomeViewState extends State<HomeView> {
                                   '${user.location.city}, ${user.location.state}, ${user.location.country}',
                               avatarUrl: user.picture.large,
                               showDivider: index < displayUsers.length - 1,
-                              onTap: () {
-                                AppNavigation.to(context)
+                              onTap: () async {
+                                await AppNavigation.to(context)
                                     .userDetails(user.login.uuid);
+                                if (context.mounted) {
+                                  context
+                                      .read<HomeViewModel>()
+                                      .loadLocalUsers();
+                                }
                               },
                             );
                           },

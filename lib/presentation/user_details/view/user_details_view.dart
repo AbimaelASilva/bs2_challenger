@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
+import '../../../core/helper/helper.dart';
 import '../../../domain/domain.dart';
 import '../../shared/shared.dart';
 import '../viewmodel/user_details_viewmodel.dart';
@@ -65,7 +65,10 @@ class UserDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.all(AppSpacing.xl),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
-                    _buildHeader(context, user, state.isSaved),
+                    _buildHeader(
+                      context,
+                      user,
+                    ),
                     const SizedBox(height: AppSpacing.xxl),
                     _buildPersonalInfoSection(context, user),
                     const SizedBox(height: AppSpacing.xl),
@@ -93,7 +96,6 @@ class UserDetailsView extends StatelessWidget {
   Widget _buildHeader(
     BuildContext context,
     UserEntity user,
-    bool isSaved,
   ) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
@@ -149,16 +151,21 @@ class UserDetailsView extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.xxl),
-          PrimaryButton(
-            label: isSaved ? 'Remover dos Salvos' : 'Salvar Usuário',
-            icon: isSaved ? Icons.delete_outline : Icons.bookmark_add,
-            onPressed: () async {
-              final wasSaved = isSaved;
-              await context.read<UserDetailsViewModel>().toggleSaveUser();
-              if (wasSaved && context.mounted) {
-                context.pop();
-              }
-            },
+          Row(
+            children: [
+              PrimaryButton(
+                label: 'Remover dos Salvos',
+                icon: Icons.bookmark_add,
+                onPressed: () async {
+                  await context.read<UserDetailsViewModel>().toggleSaveUser();
+                },
+              ),
+              PrimaryButton(
+                label: 'Salvar',
+                icon: Icons.bookmark_add,
+                onPressed: () async {},
+              ),
+            ],
           ),
         ],
       ),
@@ -239,7 +246,6 @@ class UserDetailsView extends StatelessWidget {
     BuildContext context,
     UserEntity user,
   ) {
-    final dateFormat = DateFormat('dd/MM/yyyy');
     return _buildSection(
       context,
       title: 'Data de Nascimento',
@@ -247,7 +253,7 @@ class UserDetailsView extends StatelessWidget {
         _buildInfoRow(
           context,
           'Data',
-          dateFormat.format(user.dob.date),
+          user.dob.date.toFormattedDate,
         ),
         _buildInfoRow(context, 'Idade', '${user.dob.age} anos'),
       ],
@@ -258,7 +264,6 @@ class UserDetailsView extends StatelessWidget {
     BuildContext context,
     UserEntity user,
   ) {
-    final dateFormat = DateFormat('dd/MM/yyyy');
     return _buildSection(
       context,
       title: 'Registro',
@@ -266,7 +271,7 @@ class UserDetailsView extends StatelessWidget {
         _buildInfoRow(
           context,
           'Data de Registro',
-          dateFormat.format(user.registered.date),
+          user.registered.date.toFormattedDate,
         ),
         _buildInfoRow(
           context,
