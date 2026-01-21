@@ -13,49 +13,28 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late final HomeViewModel viewModel;
+  late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    viewModel = GetIt.I<HomeViewModel>();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        viewModel.getRandonUser();
-      }
-    });
+    _viewModel = GetIt.I<HomeViewModel>();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: viewModel,
+    return BlocProvider<HomeViewModel>(
+      create: (context) => _viewModel..getRandonUser(),
       child: Scaffold(
         backgroundColor: AppColors.getBackgroundColor(context),
         appBar: AppBar(
-          title: const Text('Usuários'),
+          title: const Text('Bus2 - Usuários'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               color:
                   AppColors.getBackgroundColor(context).withValues(alpha: 0.8),
             ),
           ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: AppSpacing.sm),
-            child: IconButtonCustom(
-              icon: Icons.search,
-              onPressed: () {},
-            ),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: AppSpacing.sm),
-              child: IconButtonCustom(
-                icon: Icons.storage,
-                onPressed: () {},
-              ),
-            ),
-          ],
         ),
         body: Stack(
           children: [
@@ -176,7 +155,7 @@ class _HomeViewState extends State<HomeView> {
                 );
 
                 if (confirmed!) {
-                  await viewModel.deleteAllUsers();
+                  await _viewModel.deleteAllUsers();
                 }
               },
               backgroundColor: Colors.red,
@@ -186,7 +165,7 @@ class _HomeViewState extends State<HomeView> {
             FloatingActionButton(
               heroTag: 'addUser',
               onPressed: () {
-                viewModel.getRandonUser();
+                _viewModel.getRandonUser();
               },
               child: const Icon(Icons.add),
             ),
@@ -212,24 +191,14 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BottomNavItem(
-                icon: Icons.person_search,
-                label: 'Discovery',
+                icon: Icons.search,
+                label: 'Buscar',
                 isSelected: true,
                 onTap: () {},
               ),
               BottomNavItem(
-                icon: Icons.bookmarks,
-                label: 'Saved',
-                onTap: () {},
-              ),
-              BottomNavItem(
-                icon: Icons.history,
-                label: 'History',
-                onTap: () {},
-              ),
-              BottomNavItem(
-                icon: Icons.settings,
-                label: 'Settings',
+                icon: Icons.storage,
+                label: 'Salvos',
                 onTap: () {},
               ),
             ],
