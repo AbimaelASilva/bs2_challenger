@@ -100,17 +100,6 @@ class AppTheme {
             ),
       ),
 
-      // Card theme
-      cardTheme: CardTheme(
-        elevation: elevationLow,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusLG),
-        ),
-        color: Colors.white,
-        surfaceTintColor: Colors.transparent,
-        shadowColor: Colors.black.withOpacity(0.1),
-      ),
-
       // Elevated button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -245,20 +234,6 @@ class AppTheme {
         ),
       ),
 
-      // Dialog theme
-      dialogTheme: DialogTheme(
-        backgroundColor: backgroundLight,
-        elevation: elevationHigh,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusXL),
-        ),
-        titleTextStyle:
-            _buildTextTheme(Brightness.light).headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-        contentTextStyle: _buildTextTheme(Brightness.light).bodyLarge,
-      ),
-
       // Snackbar theme
       snackBarTheme: SnackBarThemeData(
         backgroundColor: textPrimary,
@@ -319,17 +294,6 @@ class AppTheme {
               fontWeight: FontWeight.w600,
               color: textOnDark,
             ),
-      ),
-
-      // Card theme
-      cardTheme: CardTheme(
-        elevation: elevationLow,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusLG),
-        ),
-        color: surfaceDark,
-        surfaceTintColor: Colors.transparent,
-        shadowColor: Colors.black.withOpacity(0.3),
       ),
 
       // Elevated button theme
@@ -464,20 +428,6 @@ class AppTheme {
             top: Radius.circular(radiusXL),
           ),
         ),
-      ),
-
-      // Dialog theme
-      dialogTheme: DialogTheme(
-        backgroundColor: surfaceDark,
-        elevation: elevationHigh,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusXL),
-        ),
-        titleTextStyle:
-            _buildTextTheme(Brightness.dark).headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-        contentTextStyle: _buildTextTheme(Brightness.dark).bodyLarge,
       ),
 
       // Snackbar theme

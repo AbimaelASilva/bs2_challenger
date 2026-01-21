@@ -19,14 +19,12 @@ part 'user_state.dart';
 
 class UserController extends Cubit<UserCreateEditState> {
   UserController({
-    required this.userCreateEditRepository,
+    required this.userRepository,
     required this.authRepository,
-    required this.uploadRepository,
   }) : super(UserCreateEditState.initial());
 
-  final UserRepository userCreateEditRepository;
+  final UserRepository userRepository;
   final AuthRepository authRepository;
-  final UploadRepository uploadRepository;
 
   void setUser(UserModel user) {
     emit(state.copyWith(user: user));
@@ -270,7 +268,7 @@ class UserController extends Cubit<UserCreateEditState> {
 
       log("USUÁRIO A CRIAR: ${auxUser.toSave()}");
 
-      final credentials = await userCreateEditRepository.saveUser(auxUser);
+      final credentials = await userRepository.saveUser(auxUser);
       await credentials.fold(
         (createdUser) async {
           log("USUÁRIO CRIADO: ${createdUser.toMap()}");
@@ -311,48 +309,12 @@ class UserController extends Cubit<UserCreateEditState> {
     }
   }
 
-  Future<void> uploadFile(File file, String fileName) async {
-    final result = await uploadRepository.upload(
-      file: file,
-      fileName: fileName,
-    );
-
-    result.fold(
-      (file) => AppSnackbar().success(
-        "Arquivo enviado com sucesso",
-      ),
-      (failure) => AppSnackbar().error(
-        "Erro ao enviar arquivo",
-      ),
-    );
-  }
+  Future<void> uploadFile(File file, String fileName) async {}
 
   Future<void> onPressedGetProfileImageUrl() async {
     try {
       Loader().show();
       final image = await AppImagePicker().pickImage();
-
-      // if (image != null) {
-      //   final file = File(image.path);
-
-      //   final imageName =
-      //       '${state.user.name.replaceAll(' ', '_').toLowerCase()}_${state.user.id}profileImageUrl${generateUniqueId()}.png';
-
-      //   await uploadFile(file, imageName);
-
-      //   emit(
-      //     state.copyWith(
-      //       user: state.user.copyWith(
-      //         profileImageUrl: '${EnvironmentConfig.baseUrlImage}/$imageName',
-      //       ),
-      //     ),
-      //   );
-
-      //   await userCreateEditRepository.updateUserProfileImageUrl(
-      //     userId: state.user.id,
-      //     profileImageUrl: '${EnvironmentConfig.baseUrlImage}/$imageName',
-      //   );
-      // }
     } catch (e) {
       AppSnackbar().error(
         "Erro ao selecionar arquivo",

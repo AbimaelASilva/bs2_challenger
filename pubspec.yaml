@@ -37,7 +37,7 @@ dependencies:
   share_plus: ^11.0.0
   shared_preferences: ^2.3.3
   shimmer: ^3.0.0
-  skeletonizer: ^1.4.3
+  skeletonizer: ^2.1.2
   url_launcher: ^6.3.1
 
   
@@ -67,11 +67,10 @@ flutter:
 
   assets:
     - assets/images/png/
-    - assets/icons/plants/
     - env/
     - assets/animations/lottie/
-    - assets/atletas.json
-    - assets/data/plants_seed.json
+ 
+
 
 
 

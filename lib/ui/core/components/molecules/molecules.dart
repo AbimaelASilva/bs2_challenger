@@ -1,6 +1,5 @@
 export 'bottom_sheet/bottom_sheet.dart';
 export 'cards/cards.dart';
-export 'carousel/carousel.dart';
 export 'chips/chips.dart';
 export 'circular_count/circular_count.dart';
 export 'drawer/drawer.dart';

@@ -2,7 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Flutter Stg",
+      "name": "Dev",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file",
+        "env/.env.dev.json"
+      ]
+    },
+    {
+      "name": "Stg",
       "program": "lib/main.dart",
       "request": "launch",
       "type": "dart",
@@ -12,7 +22,7 @@
       ]
     },
     {
-        "name": "Flutter Prod",
+        "name": "Prod",
         "program": "lib/main.dart",
         "request": "launch",
         "type": "dart",
@@ -21,16 +31,7 @@
           "env/.env.prod.json"
         ]
       },
-    {
-        "name": "Flutter Local",
-        "program": "lib/main.dart",
-        "request": "launch",
-        "type": "dart",
-        "args": [
-          "--dart-define-from-file",
-          "env/.env.local.json"
-        ]
-      }
+    
   ]
 }
 

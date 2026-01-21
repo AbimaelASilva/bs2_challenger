@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../../core.dart';
@@ -6,7 +6,6 @@ import '../../../core.dart';
 class AppListsEmpty extends StatelessWidget {
   AppListsEmpty({super.key, required this.label, this.icon});
 
-  final carouselController = CarouselSliderController();
 
   final String label;
   final Widget? icon;

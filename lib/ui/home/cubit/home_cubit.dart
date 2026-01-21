@@ -17,13 +17,13 @@ class HomeController extends Cubit<HomeState> {
   HomeController({
     required this.authRepository,
     required this.storageService,
-    required this.genericRepository,
+
   }) : super(HomeState.initial());
 
   final AuthRepository authRepository;
   final StorageService storageService;
 
-  final GenericRepository genericRepository;
+
 
   static const String _themeKey = 'app_theme';
 

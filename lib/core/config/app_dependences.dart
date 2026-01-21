@@ -61,18 +61,6 @@ class AppDependences {
         service: _getIt(),
       ),
     );
-
-    _getIt.registerLazySingleton<UploadRepository>(
-      () => UploadRepository(
-        service: _getIt(),
-      ),
-    );
-
-    _getIt.registerLazySingleton<GenericRepository>(
-      () => GenericRepository(
-        service: _getIt(),
-      ),
-    );
   }
 
   static void _registerServices() {
@@ -86,14 +74,6 @@ class AppDependences {
         client: _getIt(),
       ),
     );
-
-    _getIt.registerLazySingleton<UploadService>(
-      () => UploadService(client: _getIt()),
-    );
-
-    _getIt.registerLazySingleton<GenericService>(
-      () => GenericService(client: _getIt()),
-    );
   }
 
   static void _registerControllers() {
@@ -102,14 +82,12 @@ class AppDependences {
         () => HomeController(
           authRepository: _getIt(),
           storageService: _getIt(),
-          genericRepository: _getIt(),
         ),
       )
       ..registerFactory<UserController>(
         () => UserController(
-          userCreateEditRepository: _getIt(),
+          userRepository: _getIt(),
           authRepository: _getIt(),
-          uploadRepository: _getIt(),
         ),
       )
       ..registerFactory<LoginCubit>(

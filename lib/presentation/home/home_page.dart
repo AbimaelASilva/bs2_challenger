@@ -31,15 +31,6 @@ class HomePage extends StatelessWidget {
                 title: Text(context.tr.map.menuPlantsList),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BlocProvider.value(
-                        value: context.read<HomeCubit>(),
-                        child: const Center(child: Text('Plants List')),
-                      ),
-                    ),
-                  );
                 },
               ),
               ListTile(
@@ -47,15 +38,6 @@ class HomePage extends StatelessWidget {
                 title: Text(context.tr.map.menuImportExport),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BlocProvider.value(
-                        value: context.read<HomeCubit>(),
-                        child: const Center(child: Text('Import Export')),
-                      ),
-                    ),
-                  );
                 },
               ),
               ListTile(
@@ -63,12 +45,6 @@ class HomePage extends StatelessWidget {
                 title: Text(context.tr.map.menuSettings),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsPage(),
-                    ),
-                  );
                 },
               ),
               const Divider(),
@@ -105,17 +81,6 @@ class HomePage extends StatelessWidget {
                 title: Text(context.tr.map.menuAbout),
                 onTap: () {
                   Navigator.pop(context);
-                  showAboutDialog(
-                    context: context,
-                    applicationName: 'Field Map',
-                    applicationVersion: '1.0.0',
-                    applicationIcon: const Icon(Icons.agriculture, size: 48),
-                    children: [
-                      Text(
-                        context.tr.map.aboutAppDescription,
-                      ),
-                    ],
-                  );
                 },
               ),
             ],
@@ -127,17 +92,7 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             heroTag: 'addPlant',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider.value(
-                    value: context.read<PlantsCubit>(),
-                    child: const PlantFormPage(),
-                  ),
-                ),
-              );
-            },
+            onPressed: () {},
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 12),
