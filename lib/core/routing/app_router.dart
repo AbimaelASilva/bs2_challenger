@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,10 +12,7 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.home,
           name: AppRoutes.home,
-          builder: (context, state) => BlocProvider(
-            create: (context) => getIt<HomeViewModel>(),
-            child: const HomeView(),
-          ),
+          builder: (context, state) => const HomeView(),
         ),
       ],
     );
