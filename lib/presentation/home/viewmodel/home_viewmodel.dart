@@ -29,7 +29,7 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
       final now = DateTime.now();
       final difference = now.difference(lastRequestTime!);
 
-      if (difference.inSeconds >= 5) {
+      if (difference.inSeconds >= 20) {
         lastRequestTime = now;
         if (!isClosed) {
           getRandonUser();
@@ -47,6 +47,8 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
   }
 
   Future<void> getRandonUser() async {
+    if (isClosed || state.isLoading) return;
+
     try {
       emit(
         state.copyWith(
@@ -58,9 +60,11 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
       final allLocalUsers = await userRepository.getLocalUsers();
 
       if (!isClosed) {
+        final filtered = _filterUsers(allLocalUsers, state.searchQuery);
         emit(
           state.copyWith(
             users: allLocalUsers,
+            filteredUsers: filtered,
             isLoading: false,
           ),
         );
@@ -68,10 +72,6 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
     } catch (e) {
       if (!isClosed) {
         emit(state.copyWith(isLoading: false, error: e.toString()));
-      }
-    } finally {
-      if (!isClosed) {
-        emit(state.copyWith(isLoading: false));
       }
     }
   }
@@ -86,6 +86,7 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
         emit(
           state.copyWith(
             users: [],
+            filteredUsers: [],
             isLoading: false,
           ),
         );
@@ -95,5 +96,29 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
         emit(state.copyWith(error: e.toString()));
       }
     }
+  }
+
+  void filterUsers(String query) {
+    if (isClosed) return;
+
+    final filtered = _filterUsers(state.users, query);
+    emit(
+      state.copyWith(
+        filteredUsers: filtered,
+        searchQuery: query,
+      ),
+    );
+  }
+
+  List<UserEntity> _filterUsers(List<UserEntity> users, String query) {
+    if (query.isEmpty) {
+      return users;
+    }
+
+    final lowerQuery = query.toLowerCase();
+    return users.where((user) {
+      final fullName = '${user.name.first} ${user.name.last}'.toLowerCase();
+      return fullName.contains(lowerQuery);
+    }).toList();
   }
 }

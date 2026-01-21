@@ -58,5 +58,16 @@ class AppDependences {
     _getIt.registerFactory<HomeViewModel>(
       () => HomeViewModel(userRepository: _getIt()),
     );
+
+    _getIt.registerFactory<SavedViewModel>(
+      () => SavedViewModel(),
+    );
+
+    _getIt.registerFactoryParam<UserDetailsViewModel, IUserRepository, String>(
+      (repository, userId) => UserDetailsViewModel(
+        userRepository: repository,
+        userId: userId,
+      ),
+    );
   }
 }

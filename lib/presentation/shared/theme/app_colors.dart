@@ -43,9 +43,24 @@ class AppColors {
   
   static const Color slate600 = Color(0xFF475569);
   
+  static const Color error = Color(0xFFEF4444);
+  static const Color errorDark = Color(0xFFDC2626);
+  
   static Color getSlate300(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark
         ? slate600
         : slate300;
+  }
+  
+  static Color getErrorColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? errorDark
+        : error;
+  }
+  
+  static Color getShadowColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark
+        ? Colors.black.withValues(alpha: 0.3)
+        : Colors.black.withValues(alpha: 0.05);
   }
 }

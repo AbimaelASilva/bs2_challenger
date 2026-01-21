@@ -3,4 +3,5 @@ class AppRoutes {
   static const String settings = '/settings';
   static const String saved = '/saved';
   static const String history = '/history';
+  static const String userDetails = '/user-details';
 }
