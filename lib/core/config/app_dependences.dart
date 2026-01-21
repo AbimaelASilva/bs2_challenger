@@ -34,7 +34,10 @@ class AppDependences {
 
   static void _registerServices() {
     _getIt.registerLazySingleton<UserService>(
-      () => UserService(client: _getIt()),
+      () => UserService(
+        client: _getIt(),
+        storage: _getIt(),
+      ),
     );
 
     _getIt.registerLazySingleton<UserLocalStorageService>(

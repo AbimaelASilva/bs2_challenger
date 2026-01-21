@@ -16,7 +16,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeViewModel>().getRandonUser();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HomeViewModel>().getRandonUser();
+    });
   }
 
   @override
@@ -131,19 +133,52 @@ class _HomeViewState extends State<HomeView> {
               );
             },
           ),
-          Positioned(
-            bottom: AppSizes.bottomNavHeight + AppSpacing.xl,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: PrimaryButton(
-                icon: Icons.refresh,
-                label: 'Refresh List',
-                onPressed: () {
-                  context.read<HomeViewModel>().refreshUsers();
-                },
-              ),
-            ),
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'deleteAll',
+            onPressed: () async {
+              final confirmed = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Confirmar exclusão'),
+                  content: const Text(
+                    'Tem certeza que deseja excluir todos os usuários? Esta ação não pode ser desfeita.',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('Cancelar'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(true),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.red,
+                      ),
+                      child: const Text('Excluir'),
+                    ),
+                  ],
+                ),
+              );
+
+              if (confirmed == true && context.mounted) {
+                context.read<HomeViewModel>().deleteAllUsers();
+              }
+            },
+            backgroundColor: Colors.red,
+            child: const Icon(Icons.delete_outline),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          FloatingActionButton(
+            heroTag: 'addUser',
+            onPressed: () {
+              context.read<HomeViewModel>().getRandonUser();
+            },
+            child: const Icon(Icons.add),
           ),
         ],
       ),
@@ -154,7 +189,6 @@ class _HomeViewState extends State<HomeView> {
           border: Border(
             top: BorderSide(
               color: AppColors.getBorderColor(context),
-              width: 1,
             ),
           ),
         ),

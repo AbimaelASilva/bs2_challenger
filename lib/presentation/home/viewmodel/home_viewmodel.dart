@@ -11,7 +11,7 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
   final IUserRepository userRepository;
 
   Future<void> getRandonUser() async {
-    if (isClosed) return;
+    if (isClosed || state.isLoading) return;
 
     try {
       if (!isClosed) {
@@ -22,12 +22,14 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
         );
       }
 
-      final result = await userRepository.getRandonUser();
+      await userRepository.getRandonUser();
+
+      final allLocalUsers = await userRepository.getLocalUsers();
 
       if (!isClosed) {
         emit(
           state.copyWith(
-            users: [result],
+            users: allLocalUsers,
             isLoading: false,
           ),
         );
@@ -39,32 +41,27 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
     }
   }
 
-  Future<void> refreshUsers() async {
-    await getRandonUser();
-  }
+  // Future<void> refreshUsers() async {
+  //   await getRandonUser();
+  // }
 
-  Future<void> loadMoreUsers() async {
-    if (isClosed || state.isLoadingMore) return;
+  Future<void> deleteAllUsers() async {
+    if (isClosed) return;
 
     try {
-      if (!isClosed) {
-        emit(state.copyWith(isLoadingMore: true));
-      }
-
-      final result = await userRepository.getRandonUser();
-      final updatedUsers = [...state.users, result];
+      await userRepository.deleteAllUsers();
 
       if (!isClosed) {
         emit(
           state.copyWith(
-            users: updatedUsers,
-            isLoadingMore: false,
+            users: [],
+            isLoading: false,
           ),
         );
       }
     } catch (e) {
       if (!isClosed) {
-        emit(state.copyWith(isLoadingMore: false));
+        emit(state.copyWith(error: e.toString()));
       }
     }
   }

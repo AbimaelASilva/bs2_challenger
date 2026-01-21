@@ -24,63 +24,88 @@ class UserModel extends UserEntity {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    final results = json['results'] as List<dynamic>?;
-    if (results == null || results.isEmpty) {
+    if (json.containsKey('results')) {
+      final results = json['results'] as List<dynamic>?;
+      if (results == null || results.isEmpty) {
+        return UserModel(
+          gender: '',
+          name: NameModel.fromJson({}),
+          location: LocationModel.fromJson({}),
+          email: '',
+          login: LoginModel.fromJson({}),
+          dob: DobModel.fromJson({}),
+          registered: RegisteredModel.fromJson({}),
+          phone: '',
+          cell: '',
+          id: IdModel.fromJson({}),
+          picture: PictureModel.fromJson({}),
+          nat: '',
+        );
+      }
+
+      final firstResult = results[0] as Map<String, dynamic>;
+      
       return UserModel(
-        gender: '',
-        name: NameEntity.empty(),
-        location: LocationEntity.empty(),
-        email: '',
-        login: LoginEntity.empty(),
-        dob: DobEntity.empty(),
-        registered: RegisteredEntity.empty(),
-        phone: '',
-        cell: '',
-        id: IdEntity.empty(),
-        picture: PictureEntity.empty(),
-        nat: '',
+        gender: firstResult['gender']?.toString() ?? '',
+        name: NameModel.fromJson(firstResult['name'] as Map<String, dynamic>? ?? {}),
+        location: LocationModel.fromJson(
+          firstResult['location'] as Map<String, dynamic>? ?? {},
+        ),
+        email: firstResult['email']?.toString() ?? '',
+        login: LoginModel.fromJson(
+          firstResult['login'] as Map<String, dynamic>? ?? {},
+        ),
+        dob: DobModel.fromJson(firstResult['dob'] as Map<String, dynamic>? ?? {}),
+        registered: RegisteredModel.fromJson(
+          firstResult['registered'] as Map<String, dynamic>? ?? {},
+        ),
+        phone: firstResult['phone']?.toString() ?? '',
+        cell: firstResult['cell']?.toString() ?? '',
+        id: IdModel.fromJson(firstResult['id'] as Map<String, dynamic>? ?? {}),
+        picture: PictureModel.fromJson(
+          firstResult['picture'] as Map<String, dynamic>? ?? {},
+        ),
+        nat: firstResult['nat']?.toString() ?? '',
       );
     }
 
-    final firstResult = results[0] as Map<String, dynamic>;
-    
     return UserModel(
-      gender: firstResult['gender']?.toString() ?? '',
-      name: NameModel.fromJson(firstResult['name'] as Map<String, dynamic>? ?? {}),
+      gender: json['gender']?.toString() ?? '',
+      name: NameModel.fromJson(json['name'] as Map<String, dynamic>? ?? {}),
       location: LocationModel.fromJson(
-        firstResult['location'] as Map<String, dynamic>? ?? {},
+        json['location'] as Map<String, dynamic>? ?? {},
       ),
-      email: firstResult['email']?.toString() ?? '',
+      email: json['email']?.toString() ?? '',
       login: LoginModel.fromJson(
-        firstResult['login'] as Map<String, dynamic>? ?? {},
+        json['login'] as Map<String, dynamic>? ?? {},
       ),
-      dob: DobModel.fromJson(firstResult['dob'] as Map<String, dynamic>? ?? {}),
+      dob: DobModel.fromJson(json['dob'] as Map<String, dynamic>? ?? {}),
       registered: RegisteredModel.fromJson(
-        firstResult['registered'] as Map<String, dynamic>? ?? {},
+        json['registered'] as Map<String, dynamic>? ?? {},
       ),
-      phone: firstResult['phone']?.toString() ?? '',
-      cell: firstResult['cell']?.toString() ?? '',
-      id: IdModel.fromJson(firstResult['id'] as Map<String, dynamic>? ?? {}),
+      phone: json['phone']?.toString() ?? '',
+      cell: json['cell']?.toString() ?? '',
+      id: IdModel.fromJson(json['id'] as Map<String, dynamic>? ?? {}),
       picture: PictureModel.fromJson(
-        firstResult['picture'] as Map<String, dynamic>? ?? {},
+        json['picture'] as Map<String, dynamic>? ?? {},
       ),
-      nat: firstResult['nat']?.toString() ?? '',
+      nat: json['nat']?.toString() ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'gender': gender,
-      'name': (name as NameModel).toJson(),
-      'location': (location as LocationModel).toJson(),
+      'name': name is NameModel ? (name as NameModel).toJson() : NameModel.fromEntity(name).toJson(),
+      'location': location is LocationModel ? (location as LocationModel).toJson() : LocationModel.fromEntity(location).toJson(),
       'email': email,
-      'login': (login as LoginModel).toJson(),
-      'dob': (dob as DobModel).toJson(),
-      'registered': (registered as RegisteredModel).toJson(),
+      'login': login is LoginModel ? (login as LoginModel).toJson() : LoginModel.fromEntity(login).toJson(),
+      'dob': dob is DobModel ? (dob as DobModel).toJson() : DobModel.fromEntity(dob).toJson(),
+      'registered': registered is RegisteredModel ? (registered as RegisteredModel).toJson() : RegisteredModel.fromEntity(registered).toJson(),
       'phone': phone,
       'cell': cell,
-      'id': (id as IdModel).toJson(),
-      'picture': (picture as PictureModel).toJson(),
+      'id': id is IdModel ? (id as IdModel).toJson() : IdModel.fromEntity(id).toJson(),
+      'picture': picture is PictureModel ? (picture as PictureModel).toJson() : PictureModel.fromEntity(picture).toJson(),
       'nat': nat,
     };
   }
@@ -105,16 +130,16 @@ class UserModel extends UserEntity {
   UserEntity toEntity() {
     return UserEntity(
       gender: gender,
-      name: (name as NameModel).toEntity(),
-      location: (location as LocationModel).toEntity(),
+      name: name is NameModel ? (name as NameModel).toEntity() : name,
+      location: location is LocationModel ? (location as LocationModel).toEntity() : location,
       email: email,
-      login: (login as LoginModel).toEntity(),
-      dob: (dob as DobModel).toEntity(),
-      registered: (registered as RegisteredModel).toEntity(),
+      login: login is LoginModel ? (login as LoginModel).toEntity() : login,
+      dob: dob is DobModel ? (dob as DobModel).toEntity() : dob,
+      registered: registered is RegisteredModel ? (registered as RegisteredModel).toEntity() : registered,
       phone: phone,
       cell: cell,
-      id: (id as IdModel).toEntity(),
-      picture: (picture as PictureModel).toEntity(),
+      id: id is IdModel ? (id as IdModel).toEntity() : id,
+      picture: picture is PictureModel ? (picture as PictureModel).toEntity() : picture,
       nat: nat,
     );
   }

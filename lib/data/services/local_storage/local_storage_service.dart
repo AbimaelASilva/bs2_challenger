@@ -11,10 +11,18 @@ abstract class LocalStorageService<T> {
   String getId(T item);
 
   Future<void> create(T item) async {
-    final items = await getAll();
-    items.add(item);
-    await _saveItemsList(items);
+    final itemId = getId(item);
+    final existingItem = await getById(itemId);
+
     await _saveItemById(item);
+
+    if (existingItem == null) {
+      final items = await getAll();
+      if (!items.any((i) => getId(i) == itemId)) {
+        items.add(item);
+        await _saveItemsList(items);
+      }
+    }
   }
 
   Future<T?> getById(String id) async {

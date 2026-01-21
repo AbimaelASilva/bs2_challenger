@@ -14,7 +14,7 @@ class AppRouter {
           path: AppRoutes.home,
           name: AppRoutes.home,
           builder: (context, state) => BlocProvider(
-            create: (context) => getIt<HomeViewModel>()..getRandonUser(),
+            create: (context) => getIt<HomeViewModel>(),
             child: const HomeView(),
           ),
         ),

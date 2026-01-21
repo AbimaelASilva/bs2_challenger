@@ -1,14 +1,20 @@
 import 'dart:developer';
 
+import 'package:get_storage/get_storage.dart';
+
 import '../../core/config/app_endpoints.dart';
 
 import '../../core/http/http.dart';
 import '../models/user_model.dart';
 
 class UserService {
-  UserService({required this.client});
+  UserService({
+    required this.client,
+    required this.storage,
+  });
 
   final RestClient client;
+  final GetStorage storage;
 
   Future<UserModel> getRandonUser() async {
     try {

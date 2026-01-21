@@ -66,6 +66,11 @@ class UserRepository implements IUserRepository {
   }
 
   @override
+  Future<void> deleteAllUsers() async {
+    await localStorageService.deleteAll();
+  }
+
+  @override
   Future<List<UserEntity>> getLocalUsers() async {
     final localUsers = await localStorageService.getAll();
     return localUsers.map((UserModel u) => u.toEntity()).toList();
