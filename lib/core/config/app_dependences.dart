@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../data/data.dart';
+import '../../data/services/local_storage/local_storage.dart';
 import '../../domain/domain.dart';
 import '../../presentation/presentation.dart';
 import '../http/adapter/dio_adapter.dart';
@@ -19,6 +21,10 @@ class AppDependences {
   }
 
   static void _setup() {
+    _getIt.registerLazySingleton<GetStorage>(
+      GetStorage.new,
+    );
+
     _getIt.registerLazySingleton<RestClient>(
       () => GenericClientAdapter(
         dio: Dio(),
@@ -30,11 +36,18 @@ class AppDependences {
     _getIt.registerLazySingleton<UserService>(
       () => UserService(client: _getIt()),
     );
+
+    _getIt.registerLazySingleton<UserLocalStorageService>(
+      () => UserLocalStorageService(storage: _getIt()),
+    );
   }
 
   static void _registerRepositories() {
     _getIt.registerLazySingleton<IUserRepository>(
-      () => UserRepository(service: _getIt()),
+      () => UserRepository(
+        service: _getIt(),
+        localStorageService: _getIt(),
+      ),
     );
   }
 

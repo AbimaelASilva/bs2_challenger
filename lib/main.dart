@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'core/config/app_dependences.dart';
 import 'core/routing/routing.dart';
 import 'presentation/shared/shared.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await GetStorage.init();
 
   final getIt = AppDependences.registerModules();
 

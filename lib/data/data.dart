@@ -12,4 +12,5 @@ export 'models/street_model.dart';
 export 'models/timezone_model.dart';
 export 'models/user_model.dart';
 export 'repositories/user_repository.dart';
+export 'services/local_storage/local_storage.dart';
 export 'services/user_service.dart';
