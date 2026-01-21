@@ -1,7 +1,5 @@
 import 'package:result_dart/result_dart.dart';
 
-import '../../../main_old.dart';
-import '../../../ui/core/localization/localization.dart';
 import '../response/rest_client_exception.dart';
 
 AsyncResult<T> handleRequest<T extends Object>(
@@ -23,7 +21,7 @@ AsyncResult<T> handleRequest<T extends Object>(
     // Opcional: captura de outros erros não esperados
     return Failure(
       RestClientException(
-        message: navigatorKey.currentContext!.tr.erros.defaultError,
+        message: 'Erro ao realizar requisição',
         error: stackTrace,
       ),
     );

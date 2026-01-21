@@ -1,10 +1,9 @@
 // ignore_for_file: unawaited_futures
 
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
-
-import '../../../data/services/storage_service.dart';
 
 import '../response/response.dart';
 import '../status_exception/errors_string.dart';
@@ -13,11 +12,9 @@ import 'rest_client.dart';
 class GenericClientAdapter implements RestClient {
   GenericClientAdapter({
     required this.dio,
-    required this.getStorage,
   });
 
   final Dio dio;
-  final StorageService getStorage;
 
   String authRequiredKey = 'auth_required';
 

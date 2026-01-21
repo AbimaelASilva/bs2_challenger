@@ -1,59 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-import 'presentation/home/home_page.dart';
+import 'core/config/app_dependences.dart';
+import 'presentation/presentation.dart';
+import 'presentation/shared/shared.dart';
 
-import 'ui/core/localization/localization.dart';
-import 'ui/core/localization/map/map_localizations.dart';
-import 'ui/core/theme/app_theme.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const FieldMapApp());
+  final getIt = AppDependences.registerModules();
+
+  runApp(MyApp(getIt: getIt));
 }
 
-class FieldMapApp extends StatefulWidget {
-  const FieldMapApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, required this.getIt});
 
-  @override
-  State<FieldMapApp> createState() => _FieldMapAppState();
-}
-
-class _FieldMapAppState extends State<FieldMapApp> {
-  Locale _locale = const Locale('en');
-
-  void _changeLocale(Locale locale) {
-    setState(() => _locale = locale);
-  }
+  final GetIt getIt;
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return MaterialApp(
-          title: 'Desafio Bus2',
-          debugShowCheckedModeBanner: false,
-          locale: _locale,
-          // Use apenas os delegates e locais suportados pelo app
-          localizationsDelegates: [
-            ...context.localizationsDelegates!
-                .where((d) => d == MapLocalizations.delegate),
-            MapLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: MapLocalizations.supportedLocales,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          home: HomePage(
-            onChangeLocale: _changeLocale,
-            currentLocale: _locale,
-          ),
-        );
-      },
+    return MaterialApp(
+      title: 'Random Users',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
+      home: BlocProvider(
+        create: (context) => getIt<HomeViewModel>()..loadUsers(),
+        child: const HomeView(),
+      ),
     );
   }
 }
