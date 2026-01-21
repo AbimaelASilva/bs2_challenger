@@ -1,0 +1,17 @@
+{
+    "athlete": "Atleta",
+    "position": "Posição",
+    "associate": "Associado",
+    "guest": "Convidado",
+    "level": "Nível",
+    "nickName": "Apelido",
+    "active": "Ativo",
+    "injured": "Lesionado",
+    "suspended": "Suspenso",
+    "inactive": "Inativo",
+    "situation": "Situação",
+    "sucessCreatedAthlete": "Atleta criado com sucesso!",
+    "sucessUpdatedAthlete": "Atleta atualizado com sucesso!"
+   }
+
+  

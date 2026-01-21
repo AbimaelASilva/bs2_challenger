@@ -1,0 +1,749 @@
+[
+  {
+      "nickname": "ABIMAEL",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "ADELSON",
+      "level": 3,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Fred",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Jime",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Itamar ",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Curador ",
+      "level": 1,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Rony",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Igor",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Carlos ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Dinho",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Eduardo ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Elias",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Erick",
+      "level": 5,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Geovane",
+      "level": 5,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Jai",
+      "level": 5,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "John",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "João Paulo ",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Jose",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Junior Arena",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Junior Bêla",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Marcão",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Marcos Embasa",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Nauri",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Pablo",
+      "level": 1,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Perreche",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Rogério ",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Ruan",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Samuel",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Saraiva",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Tutu ",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Juninho ",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Ricardo",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Lucas",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Wesley ",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Alef",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Felipe",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Juarez",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Jilmar",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Pr. Ozias ",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Iago ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Iarley",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Juninho",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Zé Coelba",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-14"
+  },
+  {
+      "nickname": "Cv. Neutro",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Kuêba",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Patrick",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Gabriel",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Gabilé",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Carlos",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Sóter",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Ricardo",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Gustavo",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Vinícius ",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Adriano",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Tito",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Ronald",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Binho ",
+      "level": 3,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Caio",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Matheus",
+      "level": 1,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Lucas ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "CV. Evandro",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cv. Uziel",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Cassio",
+      "level": 2,
+      "status": "ASSOCIATED",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Luciano",
+      "level": 1,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Fernando ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Joivan",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Arilson",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Zé Coelba",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Junior PIB",
+      "level": 1,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "TESTE - editado8",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "VOLANTE TESTE",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "ATACANTE TESTE",
+      "level": 5,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Junior - Juarez",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Diego",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Vitor",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Rafael",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Ró",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Getúlio ",
+      "level": 2,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Agnael",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Pr. Bessa",
+      "level": 1,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Pedro",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Klaiven",
+      "level": 3,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  },
+  {
+      "nickname": "Marcelo",
+      "level": 4,
+      "status": "GUEST",
+      "group_id": "cm94fudk0001fjw45i1xtozbe",
+      "situation": "ACTIVE",
+      "position_id": "cm8oxx6j20000zidtgavtymbs",
+      "birthdate": "1990-12-14"
+  }
+]
