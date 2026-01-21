@@ -68,6 +68,7 @@ class UserDetailsView extends StatelessWidget {
                     _buildHeader(
                       context,
                       user,
+                      state,
                     ),
                     const SizedBox(height: AppSpacing.xxl),
                     _buildPersonalInfoSection(context, user),
@@ -96,6 +97,7 @@ class UserDetailsView extends StatelessWidget {
   Widget _buildHeader(
     BuildContext context,
     UserEntity user,
+    UserDetailsViewModelState state,
   ) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
@@ -153,17 +155,48 @@ class UserDetailsView extends StatelessWidget {
           const SizedBox(height: AppSpacing.xxl),
           Row(
             children: [
-              PrimaryButton(
-                label: 'Remover dos Salvos',
-                icon: Icons.bookmark_add,
-                onPressed: () async {
-                  await context.read<UserDetailsViewModel>().toggleSaveUser();
-                },
+              Expanded(
+                child: PrimaryButton(
+                  label: 'Remover',
+                  icon: Icons.bookmark_remove,
+                  onPressed: () async {
+                    await context.read<UserDetailsViewModel>().toggleSaveUser();
+                    context.pop();
+                    if (context.mounted) {
+                      CustomSnackBar.show(
+                        context,
+                        message: 'Usuário removido com sucesso!',
+                        type: SnackBarType.success,
+                      );
+                    }
+                  },
+                ),
               ),
-              PrimaryButton(
-                label: 'Salvar',
-                icon: Icons.bookmark_add,
-                onPressed: () async {},
+              const SizedBox(width: AppSpacing.xl),
+              Expanded(
+                child: PrimaryButton(
+                  label: 'Salvar',
+                  icon: Icons.bookmark_add,
+                  onPressed: () async {
+                    if (state.isSaved) {
+                      CustomSnackBar.show(
+                        context,
+                        message: 'Este usuário já está salvo localmente',
+                        type: SnackBarType.info,
+                      );
+                      return;
+                    }
+
+                    await context.read<UserDetailsViewModel>().toggleSaveUser();
+                    if (context.mounted) {
+                      CustomSnackBar.show(
+                        context,
+                        message: 'Usuário salvo com sucesso!',
+                        type: SnackBarType.success,
+                      );
+                    }
+                  },
+                ),
               ),
             ],
           ),

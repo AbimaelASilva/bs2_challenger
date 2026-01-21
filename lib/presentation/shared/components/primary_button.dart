@@ -57,7 +57,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
         scale: _scaleAnimation,
         child: Container(
           height: widget.height ?? AppSizes.buttonHeight,
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.xxl,
             vertical: AppSpacing.md,
           ),
@@ -66,7 +66,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusFull),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withOpacity(0.4),
+                color: AppColors.primary.withValues(alpha: 0.4),
                 blurRadius: 16,
                 offset: const Offset(0, 4),
               ),
@@ -74,6 +74,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.icon != null) ...[
                 Icon(
