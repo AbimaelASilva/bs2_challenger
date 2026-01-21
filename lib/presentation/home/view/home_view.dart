@@ -5,8 +5,19 @@ import '../../shared/shared.dart';
 
 import '../viewmodel/home_viewmodel.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeViewModel>().getRandonUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +67,7 @@ class HomeView extends StatelessWidget {
                       PrimaryButton(
                         label: 'Retry',
                         onPressed: () {
-                          context.read<HomeViewModel>().loadUsers();
+                          context.read<HomeViewModel>().getRandonUser();
                         },
                       ),
                     ],
@@ -91,9 +102,12 @@ class HomeView extends StatelessWidget {
                           children: [
                             for (int i = 0; i < state.users.length; i++)
                               UserListTile(
-                                name: state.users[i].name,
-                                location: state.users[i].location,
-                                avatarUrl: state.users[i].avatarUrl,
+                                name:
+                                    '${state.users[i].name.first} ${state.users[i].name.last}'
+                                        .trim(),
+                                location:
+                                    '${state.users[i].location.city}, ${state.users[i].location.state}, ${state.users[i].location.country}',
+                                avatarUrl: state.users[i].picture.large,
                                 showDivider: i < state.users.length - 1,
                                 onTap: () {},
                               ),

@@ -10,44 +10,62 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
 
   final IUserRepository userRepository;
 
-  Future<void> loadUsers() async {
+  Future<void> getRandonUser() async {
+    if (isClosed) return;
+
     try {
-      emit(state.copyWith(isLoading: true, error: null));
+      if (!isClosed) {
+        emit(
+          state.copyWith(
+            isLoading: true,
+          ),
+        );
+      }
 
-      final result = await userRepository.getAllUsers();
+      final result = await userRepository.getRandonUser();
 
-      emit(
-        state.copyWith(
-          users: result,
-          isLoading: false,
-        ),
-      );
+      if (!isClosed) {
+        emit(
+          state.copyWith(
+            users: [result],
+            isLoading: false,
+          ),
+        );
+      }
     } catch (e) {
-      emit(state.copyWith(isLoading: false, error: e.toString()));
+      if (!isClosed) {
+        emit(state.copyWith(isLoading: false, error: e.toString()));
+      }
     }
   }
 
   Future<void> refreshUsers() async {
-    await loadUsers();
+    await getRandonUser();
   }
 
   Future<void> loadMoreUsers() async {
-    if (state.isLoadingMore) return;
+    if (isClosed || state.isLoadingMore) return;
 
     try {
-      emit(state.copyWith(isLoadingMore: true));
+      if (!isClosed) {
+        emit(state.copyWith(isLoadingMore: true));
+      }
 
-      final result = await userRepository.getAllUsers();
-      final updatedUsers = [...state.users, ...result];
+      final result = await userRepository.getRandonUser();
+      final updatedUsers = [...state.users, result];
 
-      emit(
-        state.copyWith(
-          users: updatedUsers,
-          isLoadingMore: false,
-        ),
-      );
+      if (!isClosed) {
+        emit(
+          state.copyWith(
+            users: updatedUsers,
+            isLoadingMore: false,
+          ),
+        );
+      }
     } catch (e) {
-      emit(state.copyWith(isLoadingMore: false));
+      if (!isClosed) {
+        emit(state.copyWith(isLoadingMore: false));
+      }
     }
   }
 }

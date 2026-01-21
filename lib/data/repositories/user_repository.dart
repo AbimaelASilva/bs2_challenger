@@ -8,6 +8,13 @@ class UserRepository implements IUserRepository {
   final UserService service;
 
   @override
+  Future<UserEntity> getRandonUser() async {
+    final result = await service.getRandonUser();
+
+    return result.toEntity();
+  }
+
+  @override
   Future<UserEntity> getUser(String id) async {
     final result = await service.getUser(id);
 

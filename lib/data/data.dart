@@ -1,3 +1,15 @@
+export 'models/coordinates_model.dart';
+export 'models/dob_model.dart';
+export 'models/id_model.dart';
+export 'models/info_model.dart';
+export 'models/location_model.dart';
+export 'models/login_model.dart';
+export 'models/name_model.dart';
+export 'models/picture_model.dart';
+export 'models/registered_model.dart';
+export 'models/response_randomuser_model.dart';
+export 'models/street_model.dart';
+export 'models/timezone_model.dart';
 export 'models/user_model.dart';
 export 'repositories/user_repository.dart';
 export 'services/user_service.dart';

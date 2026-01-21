@@ -1,51 +1,121 @@
-import '../../domain/entities/user_entity.dart';
+import '../../domain/domain.dart';
+import 'dob_model.dart';
+import 'id_model.dart';
+import 'location_model.dart';
+import 'login_model.dart';
+import 'name_model.dart';
+import 'picture_model.dart';
+import 'registered_model.dart';
 
 class UserModel extends UserEntity {
   const UserModel({
-    required super.id,
+    required super.gender,
     required super.name,
-    required super.email,
     required super.location,
-    required super.avatarUrl,
+    required super.email,
+    required super.login,
+    required super.dob,
+    required super.registered,
+    required super.phone,
+    required super.cell,
+    required super.id,
+    required super.picture,
+    required super.nat,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
+    final results = json['results'] as List<dynamic>?;
+    if (results == null || results.isEmpty) {
+      return UserModel(
+        gender: '',
+        name: NameEntity.empty(),
+        location: LocationEntity.empty(),
+        email: '',
+        login: LoginEntity.empty(),
+        dob: DobEntity.empty(),
+        registered: RegisteredEntity.empty(),
+        phone: '',
+        cell: '',
+        id: IdEntity.empty(),
+        picture: PictureEntity.empty(),
+        nat: '',
+      );
+    }
+
+    final firstResult = results[0] as Map<String, dynamic>;
+    
     return UserModel(
-      id: json['id']?.toString() ?? '',
-      name: json['name']?.toString() ?? '',
-      email: json['email']?.toString() ?? '',
-      location: json['location']?.toString() ?? '',
-      avatarUrl: json['avatarUrl']?.toString() ?? json['picture']?.toString() ?? '',
+      gender: firstResult['gender']?.toString() ?? '',
+      name: NameModel.fromJson(firstResult['name'] as Map<String, dynamic>? ?? {}),
+      location: LocationModel.fromJson(
+        firstResult['location'] as Map<String, dynamic>? ?? {},
+      ),
+      email: firstResult['email']?.toString() ?? '',
+      login: LoginModel.fromJson(
+        firstResult['login'] as Map<String, dynamic>? ?? {},
+      ),
+      dob: DobModel.fromJson(firstResult['dob'] as Map<String, dynamic>? ?? {}),
+      registered: RegisteredModel.fromJson(
+        firstResult['registered'] as Map<String, dynamic>? ?? {},
+      ),
+      phone: firstResult['phone']?.toString() ?? '',
+      cell: firstResult['cell']?.toString() ?? '',
+      id: IdModel.fromJson(firstResult['id'] as Map<String, dynamic>? ?? {}),
+      picture: PictureModel.fromJson(
+        firstResult['picture'] as Map<String, dynamic>? ?? {},
+      ),
+      nat: firstResult['nat']?.toString() ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'name': name,
+      'gender': gender,
+      'name': (name as NameModel).toJson(),
+      'location': (location as LocationModel).toJson(),
       'email': email,
-      'location': location,
-      'avatarUrl': avatarUrl,
+      'login': (login as LoginModel).toJson(),
+      'dob': (dob as DobModel).toJson(),
+      'registered': (registered as RegisteredModel).toJson(),
+      'phone': phone,
+      'cell': cell,
+      'id': (id as IdModel).toJson(),
+      'picture': (picture as PictureModel).toJson(),
+      'nat': nat,
     };
   }
 
   factory UserModel.fromEntity(UserEntity entity) {
     return UserModel(
-      id: entity.id,
-      name: entity.name,
+      gender: entity.gender,
+      name: NameModel.fromEntity(entity.name),
+      location: LocationModel.fromEntity(entity.location),
       email: entity.email,
-      location: entity.location,
-      avatarUrl: entity.avatarUrl,
+      login: LoginModel.fromEntity(entity.login),
+      dob: DobModel.fromEntity(entity.dob),
+      registered: RegisteredModel.fromEntity(entity.registered),
+      phone: entity.phone,
+      cell: entity.cell,
+      id: IdModel.fromEntity(entity.id),
+      picture: PictureModel.fromEntity(entity.picture),
+      nat: entity.nat,
     );
   }
 
   UserEntity toEntity() {
     return UserEntity(
-      id: id,
-      name: name,
+      gender: gender,
+      name: (name as NameModel).toEntity(),
+      location: (location as LocationModel).toEntity(),
       email: email,
-      location: location,
-      avatarUrl: avatarUrl,
+      login: (login as LoginModel).toEntity(),
+      dob: (dob as DobModel).toEntity(),
+      registered: (registered as RegisteredModel).toEntity(),
+      phone: phone,
+      cell: cell,
+      id: (id as IdModel).toEntity(),
+      picture: (picture as PictureModel).toEntity(),
+      nat: nat,
     );
   }
 }
