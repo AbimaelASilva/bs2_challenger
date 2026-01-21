@@ -1,7 +1,6 @@
 // ignore_for_file: unawaited_futures
 
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 

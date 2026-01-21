@@ -67,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
                       Text('Error: ${state.error}'),
                       const SizedBox(height: AppSpacing.xl),
                       PrimaryButton(
-                        label: 'Retry',
+                        label: 'Tentar novamente',
                         onPressed: () {
                           context.read<HomeViewModel>().getRandonUser();
                         },
@@ -100,32 +100,34 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ],
                         ),
-                        child: Column(
-                          children: [
-                            for (int i = 0; i < state.users.length; i++)
-                              UserListTile(
-                                name:
-                                    '${state.users[i].name.first} ${state.users[i].name.last}'
-                                        .trim(),
-                                location:
-                                    '${state.users[i].location.city}, ${state.users[i].location.state}, ${state.users[i].location.country}',
-                                avatarUrl: state.users[i].picture.large,
-                                showDivider: i < state.users.length - 1,
-                                onTap: () {},
-                              ),
-                          ],
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.users.length,
+                          itemBuilder: (context, index) {
+                            final user = state.users[index];
+                            return UserListTile(
+                              name:
+                                  '${user.name.first} ${user.name.last}'.trim(),
+                              location:
+                                  '${user.location.city}, ${user.location.state}, ${user.location.country}',
+                              avatarUrl: user.picture.large,
+                              showDivider: index < state.users.length - 1,
+                              onTap: () {},
+                            );
+                          },
                         ),
                       ),
                     ),
                   ),
-                  if (state.isLoadingMore)
+                  if (state.isLoading)
                     const SliverToBoxAdapter(
                       child: Padding(
                         padding: EdgeInsets.only(
                           bottom: AppSpacing.xxxl + AppSizes.bottomNavHeight,
                         ),
                         child: LoadingIndicator(
-                          message: 'Fetching more profiles...',
+                          message: 'Buscando mais usuários...',
                         ),
                       ),
                     ),

@@ -11,17 +11,12 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
   final IUserRepository userRepository;
 
   Future<void> getRandonUser() async {
-    if (isClosed || state.isLoading) return;
-
     try {
-      if (!isClosed) {
-        emit(
-          state.copyWith(
-            isLoading: true,
-          ),
-        );
-      }
-
+      emit(
+        state.copyWith(
+          isLoading: true,
+        ),
+      );
       await userRepository.getRandonUser();
 
       final allLocalUsers = await userRepository.getLocalUsers();
@@ -38,12 +33,12 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
       if (!isClosed) {
         emit(state.copyWith(isLoading: false, error: e.toString()));
       }
+    } finally {
+      if (!isClosed) {
+        emit(state.copyWith(isLoading: false));
+      }
     }
   }
-
-  // Future<void> refreshUsers() async {
-  //   await getRandonUser();
-  // }
 
   Future<void> deleteAllUsers() async {
     if (isClosed) return;
