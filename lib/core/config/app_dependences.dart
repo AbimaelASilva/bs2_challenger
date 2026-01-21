@@ -60,7 +60,7 @@ class AppDependences {
     );
 
     _getIt.registerFactory<SavedViewModel>(
-      () => SavedViewModel(),
+      () => SavedViewModel(userRepository: _getIt()),
     );
 
     _getIt.registerFactoryParam<UserDetailsViewModel, IUserRepository, String>(

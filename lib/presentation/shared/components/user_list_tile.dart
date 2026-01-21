@@ -11,6 +11,7 @@ class UserListTile extends StatelessWidget {
     required this.avatarUrl,
     this.onTap,
     this.showDivider = true,
+    this.trailing,
   });
 
   final String name;
@@ -18,6 +19,7 @@ class UserListTile extends StatelessWidget {
   final String avatarUrl;
   final VoidCallback? onTap;
   final bool showDivider;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +89,12 @@ class UserListTile extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                size: AppSizes.iconSizeSmall,
-                color: AppColors.getSlate300(context),
-              ),
+              trailing ??
+                  Icon(
+                    Icons.chevron_right,
+                    size: AppSizes.iconSizeSmall,
+                    color: AppColors.getSlate300(context),
+                  ),
             ],
           ),
         ),

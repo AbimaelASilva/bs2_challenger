@@ -24,7 +24,7 @@ class AppRouter {
           name: AppRoutes.saved,
           builder: (context, state) => BlocProvider(
             create: (context) => getIt<SavedViewModel>(),
-            child: const SavedView(),
+            child: const SavedUserView(),
           ),
         ),
         GoRoute(

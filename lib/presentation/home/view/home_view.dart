@@ -119,11 +119,8 @@ class _HomeViewState extends State<HomeView> {
                               onTap: () async {
                                 await AppNavigation.to(context)
                                     .userDetails(user.login.uuid);
-                                if (context.mounted) {
-                                  context
-                                      .read<HomeViewModel>()
-                                      .loadLocalUsers();
-                                }
+
+                                context.read<HomeViewModel>().loadLocalUsers();
                               },
                             );
                           },
@@ -264,9 +261,10 @@ class _HomeViewState extends State<HomeView> {
                   BottomNavItem(
                     icon: Icons.storage,
                     label: 'Salvos',
-                    isSelected: false,
-                    onTap: () {
-                      AppNavigation.to(context).savedUsers();
+                    onTap: () async {
+                      await AppNavigation.to(context).savedUsers();
+
+                      context.read<HomeViewModel>().loadLocalUsers();
                     },
                   ),
                 ],
