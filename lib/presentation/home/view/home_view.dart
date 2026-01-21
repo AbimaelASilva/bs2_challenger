@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeViewModel>(
-      create: (context) => _viewModel..getRandonUser(),
+      create: (context) => _viewModel..startPeriodicRequest(),
       child: Scaffold(
         backgroundColor: AppColors.getBackgroundColor(context),
         appBar: AppBar(
