@@ -16,6 +16,8 @@ Este projeto é uma solução para o desafio técnico de desenvolvedor(a) Flutte
 
 ### ✨ Diferenciais e Extras (Além do Desafio)
 - **🎨 Splash Screen**: Tela de abertura animada com efeito de *fade* e identidade visual personalizada.
+- **🌍 Internacionalização**: Suporte completo para 3 idiomas (Português, Inglês e Espanhol) com detecção automática do idioma do dispositivo e seletor manual na AppBar.
+- **🖼️ Logo Oficial Bus2**: Integração do logo oficial do Bus2 na interface do aplicativo.
 - **🔍 Busca e Filtragem**: Funcionalidade de pesquisa em tempo real na Home para filtrar usuários pelo nome.
 - **➕ Controles Avançados**:
   - Botão para **Adicionar Um** usuário manualmente a qualquer momento.
