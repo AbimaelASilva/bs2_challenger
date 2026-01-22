@@ -198,9 +198,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               );
 
-              if (confirmed!) {
-                await context.read<HomeViewModel>().deleteAllUsers();
-              }
+              await context.read<HomeViewModel>().deleteAllUsers();
             },
             backgroundColor: AppColors.getErrorColor(context),
             child: const Icon(Icons.delete_outline),
