@@ -115,6 +115,7 @@ class _HomeViewState extends State<HomeView> {
                               avatarUrl: user.picture.large,
                               showDivider: index < displayUsers.length - 1,
                               onTap: () async {
+                                _closeSearch();
                                 await AppNavigation.to(context)
                                     .userDetails(user.login.uuid);
 
@@ -215,13 +216,7 @@ class _HomeViewState extends State<HomeView> {
                       border: InputBorder.none,
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.close),
-                        onPressed: () {
-                          setState(() {
-                            _isSearchVisible = false;
-                            _searchController.clear();
-                            context.read<HomeViewModel>().filterUsers('');
-                          });
-                        },
+                        onPressed: _closeSearch,
                       ),
                     ),
                   );
@@ -260,6 +255,7 @@ class _HomeViewState extends State<HomeView> {
                     icon: Icons.storage,
                     label: 'Salvos',
                     onTap: () async {
+                      _closeSearch();
                       await AppNavigation.to(context).savedUsers();
 
                       context.read<HomeViewModel>().loadLocalUsers();
@@ -269,5 +265,13 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
     );
+  }
+
+  void _closeSearch() {
+    setState(() {
+      _isSearchVisible = false;
+      _searchController.clear();
+      context.read<HomeViewModel>().filterUsers('');
+    });
   }
 }
