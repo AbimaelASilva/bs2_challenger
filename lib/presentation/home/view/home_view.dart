@@ -293,9 +293,9 @@ class _HomeViewState extends State<HomeView> {
   String _getUsersFoundText(int count) {
     String usersFound = '';
     if (count == 1) {
-      usersFound = '1 usuário encontrado';
+      usersFound = '1 usuário cadastrado localmente';
     } else {
-      usersFound = '$count usuários encontrados';
+      usersFound = '$count usuários cadastrados localmente';
     }
     return usersFound;
   }
