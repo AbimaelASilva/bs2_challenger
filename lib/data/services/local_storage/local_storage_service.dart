@@ -19,7 +19,7 @@ abstract class LocalStorageService<T> {
     if (existingItem == null) {
       final items = await getAll();
       if (!items.any((i) => getId(i) == itemId)) {
-        items.add(item);
+        items.insert(0, item);
         await _saveItemsList(items);
       }
     }
