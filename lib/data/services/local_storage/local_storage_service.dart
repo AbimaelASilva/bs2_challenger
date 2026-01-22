@@ -78,7 +78,7 @@ abstract class LocalStorageService<T> {
   }
 
   Future<void> _saveItemsList(List<T> items) async {
-    final itemsIds = items.map((i) => getId(i)).toList();
+    final itemsIds = items.map(getId).toList();
     await storage.write(key, itemsIds);
   }
 }

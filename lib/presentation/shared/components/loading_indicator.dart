@@ -18,7 +18,7 @@ class LoadingIndicator extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 24,
               height: 24,
               child: CircularProgressIndicator(
@@ -27,15 +27,15 @@ class LoadingIndicator extends StatelessWidget {
               ),
             ),
             if (message != null) ...[
-              SizedBox(height: AppSpacing.md),
+              const SizedBox(height: AppSpacing.md),
               Text(
                 message!,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white.withOpacity(0.6)
-                      : Colors.black.withOpacity(0.6),
+                      ? Colors.white.withValues(alpha: 0.6)
+                      : Colors.black.withValues(alpha: 0.6),
                 ),
               ),
             ],

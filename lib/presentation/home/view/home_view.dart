@@ -281,7 +281,7 @@ class _HomeViewState extends State<HomeView> {
                       _closeSearch();
                       await AppNavigation.to(context).savedUsers();
 
-                      context.read<HomeViewModel>().loadLocalUsers();
+                      await context.read<HomeViewModel>().loadLocalUsers();
                     },
                   ),
                 ],

@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../data/data.dart';
-import '../../data/services/local_storage/local_storage.dart';
 import '../../domain/domain.dart';
 import '../../presentation/presentation.dart';
 import '../http/adapter/dio_adapter.dart';

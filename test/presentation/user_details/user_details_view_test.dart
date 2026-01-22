@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:bus2/presentation/user_details/view/user_details_view.dart';
+import 'package:bus2/presentation/user_details/viewmodel/user_details_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:bus2/presentation/user_details/view/user_details_view.dart';
-import 'package:bus2/presentation/user_details/viewmodel/user_details_viewmodel.dart';
+
 import '../../fake_data.dart';
 import '../../test_helper.dart';
 
@@ -35,10 +35,10 @@ void main() {
         userDetailsViewModel,
         Stream.fromIterable([
           UserDetailsViewModelState(
-              user: user, isLoading: false, isSaved: false),
+              user: user,),
         ]),
         initialState: UserDetailsViewModelState(
-            user: user, isLoading: false, isSaved: false),
+            user: user,),
       );
 
       await mockNetworkImagesFor(() async {
@@ -50,7 +50,7 @@ void main() {
         // Use scrollUntilVisible to find location details
         await tester.scrollUntilVisible(
           find.text('New York'),
-          500.0,
+          500,
           scrollable: find.byType(Scrollable).first,
         );
 

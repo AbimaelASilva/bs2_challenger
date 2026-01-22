@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:bus2/presentation/shared/shared.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:bus2/presentation/shared/shared.dart';
+
 import '../../../test_helper.dart';
 
 void main() {

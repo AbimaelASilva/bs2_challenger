@@ -18,9 +18,11 @@ class UserService {
 
   Future<UserModel> getRandonUser() async {
     try {
-      final response = await client.get(AppEndpoints.randomuserApi);
+      final response = await client.get<Map<String, dynamic>>(
+        AppEndpoints.randomuserApi,
+      );
       log(response.data.toString());
-      return UserModel.fromJson(response.data as Map<String, dynamic>);
+      return UserModel.fromJson(response.data ?? {});
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -28,9 +30,10 @@ class UserService {
 
   Future<UserModel> getUser(String id) async {
     try {
-      final response = await client.get(AppEndpoints.randomuserApi);
+      final response =
+          await client.get<Map<String, dynamic>>(AppEndpoints.randomuserApi);
       log(response.data.toString());
-      return UserModel.fromJson(response.data as Map<String, dynamic>);
+      return UserModel.fromJson(response.data ?? {});
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -38,8 +41,10 @@ class UserService {
 
   Future<List<UserModel>> getAllUsers() async {
     try {
-      final response = await client.get('/users');
-      final List<dynamic> data = response.data as List<dynamic>;
+      final response = await client.get<List<Map<String, dynamic>>>(
+        '/users',
+      );
+      final List<dynamic> data = response.data ?? [];
       return data
           .map((json) => UserModel.fromJson(json as Map<String, dynamic>))
           .toList();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
+import '../theme/app_sizes.dart';
 import '../theme/app_spacing.dart';
 
 enum SnackBarType { success, error, info }
@@ -26,7 +28,7 @@ class CustomSnackBar {
       backgroundColor: _getBackgroundColor(context, type),
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(AppSizes.borderRadius),
       ),
       margin: const EdgeInsets.all(AppSpacing.xl),
       duration: const Duration(seconds: 3),

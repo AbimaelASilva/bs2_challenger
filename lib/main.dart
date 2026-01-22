@@ -13,18 +13,18 @@ void main() async {
 
   final getIt = AppDependences.registerModules();
 
-  runApp(MyApp(getIt: getIt));
+  runApp(Bus2ChanllengerApp(getIt: getIt));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.getIt});
+class Bus2ChanllengerApp extends StatelessWidget {
+  const Bus2ChanllengerApp({super.key, required this.getIt});
 
   final GetIt getIt;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Random Users',
+      title: 'Bus2 Chanllenger App',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,

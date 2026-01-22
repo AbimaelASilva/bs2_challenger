@@ -35,7 +35,7 @@ class _SplashViewState extends State<SplashView>
   Future<void> _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      AppNavigation.to(context).home();
+      await AppNavigation.to(context).home();
     }
   }
 

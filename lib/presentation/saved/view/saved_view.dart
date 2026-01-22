@@ -78,7 +78,9 @@ class SavedUserView extends StatelessWidget {
                               await AppNavigation.to(context)
                                   .userDetails(user.login.uuid);
                               if (context.mounted) {
-                                context.read<SavedViewModel>().loadSavedUsers();
+                                await context
+                                    .read<SavedViewModel>()
+                                    .loadSavedUsers();
                               }
                             },
                             trailing: IconButton(
@@ -113,7 +115,7 @@ class SavedUserView extends StatelessWidget {
                                   ),
                                 );
 
-                                if (confirmed == true && context.mounted) {
+                                if (confirmed! && context.mounted) {
                                   await context
                                       .read<SavedViewModel>()
                                       .deleteUser(user.login.uuid);

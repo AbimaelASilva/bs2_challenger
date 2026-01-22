@@ -4,7 +4,7 @@ UserEntity createFakeUser({String? uuid, String? first, String? last}) {
   return UserEntity(
     gender: 'male',
     name: NameEntity(title: 'Mr', first: first ?? 'John', last: last ?? 'Doe'),
-    location: LocationEntity(
+    location: const LocationEntity(
       street: StreetEntity(number: 123, name: 'Main St'),
       city: 'New York',
       state: 'NY',
@@ -27,8 +27,8 @@ UserEntity createFakeUser({String? uuid, String? first, String? last}) {
     registered: RegisteredEntity(date: DateTime.now(), age: 1),
     phone: '123-456-7890',
     cell: '098-765-4321',
-    id: IdEntity(name: 'SSN', value: '000-00-0000'),
-    picture: PictureEntity(
+    id: const IdEntity(name: 'SSN', value: '000-00-0000'),
+    picture: const PictureEntity(
       large: 'https://example.com/large.jpg',
       medium: 'https://example.com/medium.jpg',
       thumbnail: 'https://example.com/thumbnail.jpg',

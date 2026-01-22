@@ -28,13 +28,12 @@ class UserListTile extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(AppSpacing.listItemPadding),
+          padding: const EdgeInsets.all(AppSpacing.listItemPadding),
           decoration: BoxDecoration(
             border: showDivider
                 ? Border(
                     bottom: BorderSide(
                       color: AppColors.getBorderColor(context),
-                      width: 1,
                     ),
                   )
                 : null,
@@ -62,7 +61,7 @@ class UserListTile extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(width: AppSpacing.listItemGap),
+              const SizedBox(width: AppSpacing.listItemGap),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:bus2/presentation/saved/view/saved_view.dart';
+import 'package:bus2/presentation/saved/viewmodel/saved_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:bus2/presentation/saved/view/saved_view.dart';
-import 'package:bus2/presentation/saved/viewmodel/saved_viewmodel.dart';
+
 import '../../fake_data.dart';
 import '../../test_helper.dart';
 
@@ -39,9 +39,9 @@ void main() {
       whenListen(
         savedViewModel,
         Stream.fromIterable([
-          const SavedViewModelState(users: [], isLoading: false),
+          const SavedViewModelState(),
         ]),
-        initialState: const SavedViewModelState(users: [], isLoading: false),
+        initialState: const SavedViewModelState(),
       );
 
       await tester.pumpWidget(createSavedUserView());
@@ -58,9 +58,9 @@ void main() {
       whenListen(
         savedViewModel,
         Stream.fromIterable([
-          SavedViewModelState(users: users, isLoading: false),
+          SavedViewModelState(users: users),
         ]),
-        initialState: SavedViewModelState(users: users, isLoading: false),
+        initialState: SavedViewModelState(users: users),
       );
 
       await mockNetworkImagesFor(() async {
@@ -78,9 +78,9 @@ void main() {
       whenListen(
         savedViewModel,
         Stream.fromIterable([
-          SavedViewModelState(users: users, isLoading: false),
+          SavedViewModelState(users: users),
         ]),
-        initialState: SavedViewModelState(users: users, isLoading: false),
+        initialState: SavedViewModelState(users: users),
       );
 
       await mockNetworkImagesFor(() async {

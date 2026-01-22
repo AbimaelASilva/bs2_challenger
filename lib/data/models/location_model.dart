@@ -23,9 +23,11 @@ class LocationModel extends LocationEntity {
       country: json['country']?.toString() ?? '',
       postcode: json['postcode'],
       coordinates: CoordinatesModel.fromJson(
-          json['coordinates'] as Map<String, dynamic>? ?? {}),
+        json['coordinates'] as Map<String, dynamic>? ?? {},
+      ),
       timezone: TimezoneModel.fromJson(
-          json['timezone'] as Map<String, dynamic>? ?? {}),
+        json['timezone'] as Map<String, dynamic>? ?? {},
+      ),
     );
   }
 

@@ -182,7 +182,6 @@ class UserDetailsView extends StatelessWidget {
                       CustomSnackBar.show(
                         context,
                         message: 'Este usuário já está salvo localmente',
-                        type: SnackBarType.info,
                       );
                       return;
                     }

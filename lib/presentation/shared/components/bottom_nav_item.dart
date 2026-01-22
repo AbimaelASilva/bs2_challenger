@@ -31,7 +31,7 @@ class BottomNavItem extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.borderRadius),
         child: Container(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.md,
             vertical: AppSpacing.xs,
           ),
@@ -43,7 +43,7 @@ class BottomNavItem extends StatelessWidget {
                 size: AppSizes.iconSizeLarge,
                 color: color,
               ),
-              SizedBox(height: AppSpacing.xs / 2),
+              const SizedBox(height: AppSpacing.xs / 2),
               Text(
                 label,
                 style: TextStyle(
