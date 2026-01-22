@@ -63,7 +63,11 @@ flutter test
 
 ## 📦 Como Executar o Projeto
 
-1. Certifique-se de ter o Flutter instalado na versão estável.
+Este projeto foi desenvolvido utilizando:
+- **Flutter**: 3.35.6
+- **Dart**: 3.9.2
+
+1. Certifique-se de ter o Flutter instalado na versão recomendada (ou superior).
 2. Clone o repositório.
 3. Execute o comando para obter as dependências:
    ```bash
