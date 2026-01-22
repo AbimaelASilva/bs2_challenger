@@ -42,8 +42,20 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: AppColors.getBackgroundColor(context),
       appBar: AppBar(
+        leading: const SizedBox.shrink(),
         automaticallyImplyLeading: false,
-        title: Text(context.l10n.appTitle),
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const AppImagesAssets(
+              path: AppImagesPath.bus2Foot,
+              width: 100,
+            ),
+            const SizedBox(width: AppSpacing.xl),
+            Text(context.l10n.challenge),
+          ],
+        ),
         actions: const [
           LanguageSelector(),
         ],
