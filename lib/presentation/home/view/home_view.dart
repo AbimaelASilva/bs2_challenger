@@ -80,9 +80,30 @@ class _HomeViewState extends State<HomeView> {
 
               return CustomScrollView(
                 slivers: [
+                  if (displayUsers.isNotEmpty)
+                    SliverPadding(
+                      padding: const EdgeInsets.only(
+                        top: AppSpacing.xl,
+                        left: AppSpacing.xl,
+                        right: AppSpacing.xl,
+                      ),
+                      sliver: SliverToBoxAdapter(
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            _getUsersFoundText(displayUsers.length),
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.getSlate500(context),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   SliverPadding(
                     padding: const EdgeInsets.only(
-                      top: AppSpacing.xl,
+                      top: AppSpacing.md,
                       left: AppSpacing.xl,
                       right: AppSpacing.xl,
                       bottom: AppSpacing.xxxl + AppSizes.bottomNavHeight,
@@ -119,7 +140,9 @@ class _HomeViewState extends State<HomeView> {
                                 await AppNavigation.to(context)
                                     .userDetails(user.login.uuid);
 
-                                context.read<HomeViewModel>().loadLocalUsers();
+                                await context
+                                    .read<HomeViewModel>()
+                                    .loadLocalUsers();
                               },
                             );
                           },
@@ -265,6 +288,16 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
     );
+  }
+
+  String _getUsersFoundText(int count) {
+    String usersFound = '';
+    if (count == 1) {
+      usersFound = '1 usuário encontrado';
+    } else {
+      usersFound = '$count usuários encontrados';
+    }
+    return usersFound;
   }
 
   void _closeSearch() {

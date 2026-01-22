@@ -9,8 +9,13 @@ import 'app_routes.dart';
 class AppRouter {
   static GoRouter createRouter(GetIt getIt) {
     return GoRouter(
-      initialLocation: AppRoutes.home,
+      initialLocation: AppRoutes.splash,
       routes: [
+        GoRoute(
+          path: AppRoutes.splash,
+          name: AppRoutes.splash,
+          builder: (context, state) => const SplashView(),
+        ),
         GoRoute(
           path: AppRoutes.home,
           name: AppRoutes.home,
