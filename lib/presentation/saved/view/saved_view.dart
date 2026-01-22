@@ -16,7 +16,7 @@ class SavedUserView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.getBackgroundColor(context),
         appBar: AppBar(
-          title: const Text('Salvos'),
+          title: const Text('Usuários Salvos'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               color:

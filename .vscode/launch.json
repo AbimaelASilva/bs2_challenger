@@ -6,33 +6,18 @@
       "program": "lib/main.dart",
       "request": "launch",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file",
-        "env/.env.dev.json"
-      ]
     },
     {
       "name": "Stg",
       "program": "lib/main.dart",
       "request": "launch",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file",
-        "env/.env.stg.json"
-      ]
     },
     {
-        "name": "Prod",
-        "program": "lib/main.dart",
-        "request": "launch",
-        "type": "dart",
-        "args": [
-          "--dart-define-from-file",
-          "env/.env.prod.json"
-        ]
-      },
-    
+      "name": "Prod",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+    },
   ]
 }
-
-

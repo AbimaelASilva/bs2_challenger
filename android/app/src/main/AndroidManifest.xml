@@ -15,9 +15,9 @@
     
     <uses-feature android:name="android.hardware.location.gps" />
     <application
-        android:label="base-code"
+        android:label="Bus2 Challenger"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

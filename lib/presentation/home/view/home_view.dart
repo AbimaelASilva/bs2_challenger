@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../core/routing/app_routes.dart';
 import '../../../core/routing/routing.dart';
 import '../../shared/shared.dart';
 import '../viewmodel/home_viewmodel.dart';
@@ -42,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: AppColors.getBackgroundColor(context),
       appBar: AppBar(
-        title: const Text('Bus2 - Usuários'),
+        title: const Text('Desafio Bus2'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             color: AppColors.getBackgroundColor(context).withValues(alpha: 0.8),

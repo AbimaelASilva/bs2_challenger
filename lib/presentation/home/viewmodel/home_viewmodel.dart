@@ -29,7 +29,7 @@ class HomeViewModel extends Cubit<HomeViewModelState> {
       final now = DateTime.now();
       final difference = now.difference(lastRequestTime!);
 
-      if (difference.inSeconds >= 20) {
+      if (difference.inSeconds >= 5) {
         lastRequestTime = now;
         if (!isClosed) {
           getRandonUser();
