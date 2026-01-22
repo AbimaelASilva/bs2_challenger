@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/helper/localization_helper.dart';
 import '../../../core/services/locale_service.dart';
 import '../theme/app_colors.dart';
+import 'images/images.dart';
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});
@@ -13,7 +14,11 @@ class LanguageSelector extends StatelessWidget {
     final l10n = context.l10n;
 
     return IconButton(
-      icon: const Icon(Icons.language),
+      icon: AppImagesAssets(
+        path: _getFlagPath(currentLocale),
+        width: 24,
+        height: 24,
+      ),
       onPressed: () {
         showDialog<void>(
           context: context,
@@ -53,6 +58,19 @@ class LanguageSelector extends StatelessWidget {
     );
   }
 
+  String _getFlagPath(Locale locale) {
+    switch (locale.languageCode) {
+      case 'pt':
+        return AppImagesPath.brazil;
+      case 'en':
+        return AppImagesPath.usa;
+      case 'es':
+        return AppImagesPath.spain;
+      default:
+        return AppImagesPath.brazil;
+    }
+  }
+
   Widget _buildLanguageOption(
     BuildContext dialogContext,
     BuildContext parentContext,
@@ -63,8 +81,13 @@ class LanguageSelector extends StatelessWidget {
     final isSelected = locale.languageCode == currentLocale.languageCode;
 
     return ListTile(
+      leading: AppImagesAssets(
+        path: _getFlagPath(locale),
+        width: 32,
+        height: 32,
+      ),
       title: Text(label),
-      leading: Radio<Locale>(
+      trailing: Radio<Locale>(
         value: locale,
         groupValue: currentLocale,
         onChanged: (value) async {
@@ -79,6 +102,10 @@ class LanguageSelector extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      onTap: () async {
+        await LocaleService.setLocale(locale);
+        Navigator.of(dialogContext).pop();
+      },
     );
   }
 }
