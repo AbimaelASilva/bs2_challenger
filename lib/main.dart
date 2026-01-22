@@ -16,7 +16,7 @@ void main() async {
 
   final getIt = AppDependences.registerModules();
 
-  runApp(Bus2ChanllengerApp(key: Bus2ChanllengerApp.appKey, getIt: getIt));
+  runApp(Bus2ChanllengerApp(getIt: getIt));
 }
 
 class Bus2ChanllengerApp extends StatefulWidget {
@@ -24,37 +24,51 @@ class Bus2ChanllengerApp extends StatefulWidget {
 
   final GetIt getIt;
 
-  static final GlobalKey<_Bus2ChanllengerAppState> appKey = GlobalKey();
-
   @override
   State<Bus2ChanllengerApp> createState() => _Bus2ChanllengerAppState();
 }
 
 class _Bus2ChanllengerAppState extends State<Bus2ChanllengerApp> {
-  Locale _locale = LocaleService.getLocale();
+  @override
+  void initState() {
+    super.initState();
+    LocaleService.getLocale();
+    LocaleService.localeNotifier.addListener(_onLocaleChanged);
+  }
 
-  void updateLocale(Locale locale) {
-    setState(() {
-      _locale = locale;
-    });
+  @override
+  void dispose() {
+    LocaleService.localeNotifier.removeListener(_onLocaleChanged);
+    super.dispose();
+  }
+
+  void _onLocaleChanged() {
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Bus2 Chanllenger App',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      locale: _locale,
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: LocaleService.getSupportedLocales(),
-      routerConfig: AppRouter.createRouter(widget.getIt),
+    return ValueListenableBuilder<Locale>(
+      valueListenable: LocaleService.localeNotifier,
+      builder: (context, locale, child) {
+        return MaterialApp.router(
+          title: 'Bus2 Chanllenger App',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.dark,
+          locale: locale,
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: LocaleService.getSupportedLocales(),
+          routerConfig: AppRouter.createRouter(widget.getIt),
+        );
+      },
     );
   }
 }

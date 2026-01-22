@@ -102,21 +102,51 @@ class AppLocalizations {
   }
 
   String _handlePlural(String template, int count) {
-    if (template.contains('{count, plural')) {
-      if (count == 0 && template.contains('=0{')) {
-        final match = RegExp(r'=0\{([^}]+)\}').firstMatch(template);
-        if (match != null) return match.group(1)!.trim();
-      } else if (count == 1 && template.contains('=1{')) {
-        final match = RegExp(r'=1\{([^}]+)\}').firstMatch(template);
-        if (match != null) return match.group(1)!.replaceAll('{count}', count.toString()).trim();
-      } else if (template.contains('other{')) {
-        final match = RegExp(r'other\{([^}]+)\}').firstMatch(template);
-        if (match != null) return match.group(1)!.replaceAll('{count}', count.toString()).trim();
-      }
-    } else {
+    if (!template.contains('{count, plural')) {
       return template.replaceAll('{count}', count.toString());
     }
-    return template;
+
+    String? result;
+    
+    if (count == 0 && template.contains('=0{')) {
+      result = _extractPluralContent(template, '=0{');
+    } else if (count == 1 && template.contains('=1{')) {
+      result = _extractPluralContent(template, '=1{');
+    }
+    
+    if (result == null && template.contains('other{')) {
+      result = _extractPluralContent(template, 'other{');
+    }
+
+    result ??= template;
+    return result.replaceAll('{count}', count.toString());
+  }
+
+  String? _extractPluralContent(String template, String pattern) {
+    final startIndex = template.indexOf(pattern);
+    if (startIndex == -1) return null;
+
+    final contentStart = startIndex + pattern.length;
+    int braceCount = 0;
+    int endIndex = contentStart;
+
+    for (int i = contentStart; i < template.length; i++) {
+      if (template[i] == '{') {
+        braceCount++;
+      } else if (template[i] == '}') {
+        if (braceCount == 0) {
+          endIndex = i;
+          break;
+        }
+        braceCount--;
+      }
+    }
+
+    if (endIndex > contentStart) {
+      return template.substring(contentStart, endIndex).trim();
+    }
+
+    return null;
   }
 
   Map<String, String> _getTranslations() {

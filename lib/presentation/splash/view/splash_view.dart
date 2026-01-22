@@ -52,24 +52,23 @@ class _SplashViewState extends State<SplashView>
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/png/bus-stop.png',
-                width: 150,
-                height: 150,
+              AppImagesAssets(
+                path: AppImagesPath.bus2Foot,
+                width: 200,
+                height: 100,
               ),
-              const SizedBox(height: AppSpacing.xxl),
-              const Text(
-                'Bus2 Challenger',
+              Text(
+                'Challenger',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.2,
                 ),
               ),
-              const Text(
+              Text(
                 'By Abimael Andrade',
                 style: TextStyle(
                   fontSize: 16,
@@ -77,7 +76,7 @@ class _SplashViewState extends State<SplashView>
                   letterSpacing: 1.2,
                 ),
               ),
-              const Text(
+              Text(
                 'Mobile developer',
                 style: TextStyle(
                   fontSize: 16,

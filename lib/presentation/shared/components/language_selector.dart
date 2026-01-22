@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/helper/localization_helper.dart';
 import '../../../core/services/locale_service.dart';
-import '../../../main.dart';
 import '../theme/app_colors.dart';
 
 class LanguageSelector extends StatelessWidget {
@@ -72,7 +71,6 @@ class LanguageSelector extends StatelessWidget {
           if (value != null) {
             await LocaleService.setLocale(value);
             Navigator.of(dialogContext).pop();
-            Bus2ChanllengerApp.appKey.currentState?.updateLocale(value);
           }
         },
       ),
