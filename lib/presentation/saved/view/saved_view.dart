@@ -46,8 +46,34 @@ class SavedUserView extends StatelessWidget {
 
             return CustomScrollView(
               slivers: [
+                if (state.users.isNotEmpty)
+                  SliverPadding(
+                    padding: const EdgeInsets.only(
+                      top: AppSpacing.xl,
+                      left: AppSpacing.xl,
+                      right: AppSpacing.xl,
+                    ),
+                    sliver: SliverToBoxAdapter(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _getUsersFoundCountText(state.users.length),
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.getSlate500(context),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 SliverPadding(
-                  padding: const EdgeInsets.all(AppSpacing.xl),
+                  padding: const EdgeInsets.only(
+                    top: AppSpacing.md,
+                    left: AppSpacing.xl,
+                    right: AppSpacing.xl,
+                    bottom: AppSpacing.xl,
+                  ),
                   sliver: SliverToBoxAdapter(
                     child: Container(
                       decoration: BoxDecoration(
@@ -141,5 +167,12 @@ class SavedUserView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getUsersFoundCountText(int count) {
+    if (count == 1) {
+      return '1 usuário salvo localmente';
+    }
+    return '$count usuários salvos localmente';
   }
 }

@@ -40,6 +40,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: AppColors.getBackgroundColor(context),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Desafio Bus2'),
         flexibleSpace: Container(
           decoration: BoxDecoration(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import '../../../domain/domain.dart';
 
@@ -7,15 +9,26 @@ class SavedViewModel extends Cubit<SavedViewModelState> {
   SavedViewModel({required this.userRepository})
       : super(const SavedViewModelState()) {
     loadSavedUsers();
+    _startPeriodicRefresh();
   }
 
   final IUserRepository userRepository;
+  Timer? _refreshTimer;
 
-  Future<void> loadSavedUsers() async {
+  void _startPeriodicRefresh() {
+    _refreshTimer = Timer.periodic(const Duration(seconds: 4), (_) {
+      loadSavedUsers(showLoading: false);
+    });
+  }
+
+  Future<void> loadSavedUsers({bool showLoading = true}) async {
     if (isClosed) return;
 
     try {
-      emit(state.copyWith(isLoading: true));
+      if (showLoading) {
+        emit(state.copyWith(isLoading: true));
+      }
+
       final users = await userRepository.getLocalUsers();
 
       if (!isClosed) {
@@ -39,5 +52,11 @@ class SavedViewModel extends Cubit<SavedViewModelState> {
         emit(state.copyWith(error: e.toString()));
       }
     }
+  }
+
+  @override
+  Future<void> close() {
+    _refreshTimer?.cancel();
+    return super.close();
   }
 }
