@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:go_router/go_router.dart';
 
 import 'core/config/app_dependences.dart';
 import 'core/helper/helper.dart';
@@ -29,23 +30,13 @@ class Bus2ChanllengerApp extends StatefulWidget {
 }
 
 class _Bus2ChanllengerAppState extends State<Bus2ChanllengerApp> {
+  late final GoRouter _router;
+
   @override
   void initState() {
     super.initState();
+    _router = AppRouter.createRouter(widget.getIt);
     LocaleService.getLocale();
-    LocaleService.localeNotifier.addListener(_onLocaleChanged);
-  }
-
-  @override
-  void dispose() {
-    LocaleService.localeNotifier.removeListener(_onLocaleChanged);
-    super.dispose();
-  }
-
-  void _onLocaleChanged() {
-    if (mounted) {
-      setState(() {});
-    }
   }
 
   @override
@@ -66,7 +57,8 @@ class _Bus2ChanllengerAppState extends State<Bus2ChanllengerApp> {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: LocaleService.getSupportedLocales(),
-          routerConfig: AppRouter.createRouter(widget.getIt),
+          routerConfig: _router,
+          debugShowCheckedModeBanner: false,
         );
       },
     );
