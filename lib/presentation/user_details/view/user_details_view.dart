@@ -20,7 +20,7 @@ class UserDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.getBackgroundColor(context),
       appBar: AppBar(
-        title: const Text('Detalhes do Usuário'),
+        title: Text(context.l10n.userDetails),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             color: AppColors.getBackgroundColor(context).withValues(alpha: 0.8),
@@ -40,10 +40,10 @@ class UserDetailsView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Erro: ${state.error}'),
+                  Text('${context.l10n.error}: ${state.error}'),
                   const SizedBox(height: AppSpacing.xl),
                   PrimaryButton(
-                    label: 'Voltar',
+                    label: context.l10n.back,
                     onPressed: () => context.pop(),
                   ),
                 ],
@@ -52,8 +52,8 @@ class UserDetailsView extends StatelessWidget {
           }
 
           if (state.user == null) {
-            return const Center(
-              child: Text('Usuário não encontrado'),
+            return Center(
+              child: Text(context.l10n.userNotFound),
             );
           }
 
@@ -157,7 +157,7 @@ class UserDetailsView extends StatelessWidget {
             children: [
               Expanded(
                 child: PrimaryButton(
-                  label: 'Remover',
+                  label: context.l10n.remove,
                   icon: Icons.bookmark_remove,
                   onPressed: () async {
                     await context.read<UserDetailsViewModel>().toggleSaveUser();
@@ -165,7 +165,7 @@ class UserDetailsView extends StatelessWidget {
                     if (context.mounted) {
                       CustomSnackBar.show(
                         context,
-                        message: 'Usuário removido com sucesso!',
+                        message: context.l10n.userRemovedSuccess,
                         type: SnackBarType.success,
                       );
                     }
@@ -175,13 +175,13 @@ class UserDetailsView extends StatelessWidget {
               const SizedBox(width: AppSpacing.xl),
               Expanded(
                 child: PrimaryButton(
-                  label: 'Salvar',
+                  label: context.l10n.save,
                   icon: Icons.bookmark_add,
                   onPressed: () async {
                     if (state.isSaved) {
                       CustomSnackBar.show(
                         context,
-                        message: 'Este usuário já está salvo localmente',
+                        message: context.l10n.userAlreadySaved,
                       );
                       return;
                     }
@@ -190,7 +190,7 @@ class UserDetailsView extends StatelessWidget {
                     if (context.mounted) {
                       CustomSnackBar.show(
                         context,
-                        message: 'Usuário salvo com sucesso!',
+                        message: context.l10n.userSavedSuccess,
                         type: SnackBarType.success,
                       );
                     }
@@ -210,12 +210,12 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Informações Pessoais',
+      title: context.l10n.personalInfo,
       children: [
-        _buildInfoRow(context, 'Gênero', user.gender),
-        _buildInfoRow(context, 'Telefone', user.phone),
-        _buildInfoRow(context, 'Celular', user.cell),
-        _buildInfoRow(context, 'Nacionalidade', user.nat),
+        _buildInfoRow(context, context.l10n.gender, user.gender),
+        _buildInfoRow(context, context.l10n.phone, user.phone),
+        _buildInfoRow(context, context.l10n.cell, user.cell),
+        _buildInfoRow(context, context.l10n.nationality, user.nat),
       ],
     );
   }
@@ -226,29 +226,29 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Localização',
+      title: context.l10n.location,
       children: [
         _buildInfoRow(
           context,
-          'Endereço',
+          context.l10n.address,
           '${user.location.street.number} ${user.location.street.name}',
         ),
-        _buildInfoRow(context, 'Cidade', user.location.city),
-        _buildInfoRow(context, 'Estado', user.location.state),
-        _buildInfoRow(context, 'País', user.location.country),
+        _buildInfoRow(context, context.l10n.city, user.location.city),
+        _buildInfoRow(context, context.l10n.state, user.location.state),
+        _buildInfoRow(context, context.l10n.country, user.location.country),
         _buildInfoRow(
           context,
-          'CEP',
+          context.l10n.postcode,
           user.location.postcode.toString(),
         ),
         _buildInfoRow(
           context,
-          'Coordenadas',
+          context.l10n.coordinates,
           '${user.location.coordinates.latitude}, ${user.location.coordinates.longitude}',
         ),
         _buildInfoRow(
           context,
-          'Fuso Horário',
+          context.l10n.timezone,
           '${user.location.timezone.offset} - ${user.location.timezone.description}',
         ),
       ],
@@ -261,15 +261,15 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Login',
+      title: context.l10n.login,
       children: [
-        _buildInfoRow(context, 'UUID', user.login.uuid),
-        _buildInfoRow(context, 'Usuário', user.login.username),
-        _buildInfoRow(context, 'Senha', user.login.password),
-        _buildInfoRow(context, 'Salt', user.login.salt),
-        _buildInfoRow(context, 'MD5', user.login.md5),
-        _buildInfoRow(context, 'SHA1', user.login.sha1),
-        _buildInfoRow(context, 'SHA256', user.login.sha256),
+        _buildInfoRow(context, context.l10n.uuid, user.login.uuid),
+        _buildInfoRow(context, context.l10n.username, user.login.username),
+        _buildInfoRow(context, context.l10n.password, user.login.password),
+        _buildInfoRow(context, context.l10n.salt, user.login.salt),
+        _buildInfoRow(context, context.l10n.md5, user.login.md5),
+        _buildInfoRow(context, context.l10n.sha1, user.login.sha1),
+        _buildInfoRow(context, context.l10n.sha256, user.login.sha256),
       ],
     );
   }
@@ -280,14 +280,14 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Data de Nascimento',
+      title: context.l10n.dateOfBirth,
       children: [
         _buildInfoRow(
           context,
-          'Data',
+          context.l10n.date,
           user.dob.date.toFormattedDate,
         ),
-        _buildInfoRow(context, 'Idade', '${user.dob.age} anos'),
+        _buildInfoRow(context, context.l10n.age, '${user.dob.age} ${context.l10n.years(user.dob.age)}'),
       ],
     );
   }
@@ -298,17 +298,17 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Registro',
+      title: context.l10n.registered,
       children: [
         _buildInfoRow(
           context,
-          'Data de Registro',
+          context.l10n.registrationDate,
           user.registered.date.toFormattedDate,
         ),
         _buildInfoRow(
           context,
-          'Tempo de Registro',
-          '${user.registered.age} anos',
+          context.l10n.registrationTime,
+          '${user.registered.age} ${context.l10n.years(user.registered.age)}',
         ),
       ],
     );
@@ -320,10 +320,10 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Identificação',
+      title: context.l10n.identification,
       children: [
-        _buildInfoRow(context, 'Tipo', user.id.name),
-        _buildInfoRow(context, 'Valor', user.id.value),
+        _buildInfoRow(context, context.l10n.type, user.id.name),
+        _buildInfoRow(context, context.l10n.value, user.id.value),
       ],
     );
   }
@@ -334,11 +334,11 @@ class UserDetailsView extends StatelessWidget {
   ) {
     return _buildSection(
       context,
-      title: 'Fotos',
+      title: context.l10n.pictures,
       children: [
-        _buildInfoRow(context, 'Grande', user.picture.large),
-        _buildInfoRow(context, 'Média', user.picture.medium),
-        _buildInfoRow(context, 'Miniatura', user.picture.thumbnail),
+        _buildInfoRow(context, context.l10n.large, user.picture.large),
+        _buildInfoRow(context, context.l10n.medium, user.picture.medium),
+        _buildInfoRow(context, context.l10n.thumbnail, user.picture.thumbnail),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/helper/helper.dart';
 import '../../../core/routing/routing.dart';
 import '../../shared/shared.dart';
 import '../viewmodel/home_viewmodel.dart';
@@ -16,13 +17,14 @@ class _HomeViewState extends State<HomeView> {
   final TextEditingController _searchController = TextEditingController();
   bool _isSearchVisible = false;
 
+  late final HomeViewModel viewModel;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      viewModel = context.read<HomeViewModel>();
       if (mounted) {
         _searchController.addListener(() {
-          final viewModel = context.read<HomeViewModel>();
           viewModel.filterUsers(_searchController.text);
         });
       }
@@ -41,7 +43,10 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: AppColors.getBackgroundColor(context),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Desafio Bus2'),
+        title: Text(context.l10n.appTitle),
+        actions: const [
+          LanguageSelector(),
+        ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
             color: AppColors.getBackgroundColor(context).withValues(alpha: 0.8),
@@ -63,12 +68,12 @@ class _HomeViewState extends State<HomeView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Erro: ${state.error}'),
+                      Text('${context.l10n.error}: ${state.error}'),
                       const SizedBox(height: AppSpacing.xl),
                       PrimaryButton(
-                        label: 'Tentar novamente',
+                        label: context.l10n.tryAgain,
                         onPressed: () {
-                          context.read<HomeViewModel>().getRandonUser();
+                          viewModel.getRandonUser();
                         },
                       ),
                     ],
@@ -92,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            _getUsersFoundText(displayUsers.length),
+                            context.l10n.usersFound(displayUsers.length),
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -152,13 +157,13 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   if (state.isLoading)
-                    const SliverToBoxAdapter(
+                    SliverToBoxAdapter(
                       child: Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           bottom: AppSpacing.xxxl + AppSizes.bottomNavHeight,
                         ),
                         child: LoadingIndicator(
-                          message: 'Buscando mais usuários...',
+                          message: context.l10n.fetchingMoreUsers,
                         ),
                       ),
                     ),
@@ -178,27 +183,27 @@ class _HomeViewState extends State<HomeView> {
               final confirmed = await showDialog<bool>(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('Confirmar exclusão'),
-                  content: const Text(
-                    'Tem certeza que deseja excluir todos os usuários? Esta ação não pode ser desfeita.',
-                  ),
+                  title: Text(context.l10n.confirmDelete),
+                  content: Text(context.l10n.confirmDeleteAllMessage),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('Cancelar'),
+                      child: Text(context.l10n.cancel),
                     ),
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(true),
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.getErrorColor(context),
                       ),
-                      child: const Text('Excluir'),
+                      child: Text(context.l10n.delete),
                     ),
                   ],
                 ),
               );
 
-              await context.read<HomeViewModel>().deleteAllUsers();
+              if (confirmed == true) {
+                await viewModel.deleteAllUsers();
+              }
             },
             backgroundColor: AppColors.getErrorColor(context),
             child: const Icon(Icons.delete_outline),
@@ -207,7 +212,7 @@ class _HomeViewState extends State<HomeView> {
           FloatingActionButton(
             heroTag: 'addUser',
             onPressed: () {
-              context.read<HomeViewModel>().getRandonUser();
+              viewModel.getRandonUser();
             },
             child: const Icon(Icons.add),
           ),
@@ -234,7 +239,7 @@ class _HomeViewState extends State<HomeView> {
                     controller: _searchController,
                     autofocus: true,
                     decoration: InputDecoration(
-                      hintText: 'Buscar por nome...',
+                      hintText: context.l10n.searchPlaceholder,
                       border: InputBorder.none,
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.close),
@@ -266,7 +271,7 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   BottomNavItem(
                     icon: Icons.search,
-                    label: 'Buscar',
+                    label: context.l10n.search,
                     onTap: () {
                       setState(() {
                         _isSearchVisible = true;
@@ -275,12 +280,12 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   BottomNavItem(
                     icon: Icons.storage,
-                    label: 'Salvos',
+                    label: context.l10n.saved,
                     onTap: () async {
                       _closeSearch();
                       await AppNavigation.to(context).savedUsers();
 
-                      await context.read<HomeViewModel>().loadLocalUsers();
+                      await viewModel.loadLocalUsers();
                     },
                   ),
                 ],
@@ -289,21 +294,11 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  String _getUsersFoundText(int count) {
-    String usersFound = '';
-    if (count == 1) {
-      usersFound = '1 usuário cadastrado localmente';
-    } else {
-      usersFound = '$count usuários cadastrados localmente';
-    }
-    return usersFound;
-  }
-
   void _closeSearch() {
     setState(() {
       _isSearchVisible = false;
       _searchController.clear();
-      context.read<HomeViewModel>().filterUsers('');
+      viewModel.filterUsers('');
     });
   }
 }

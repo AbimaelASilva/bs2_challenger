@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../core/helper/helper.dart';
 import '../../../core/routing/routing.dart';
 import '../../shared/shared.dart';
 import '../viewmodel/saved_viewmodel.dart';
@@ -16,7 +17,7 @@ class SavedUserView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.getBackgroundColor(context),
         appBar: AppBar(
-          title: const Text('Usuários Salvos'),
+          title: Text(context.l10n.savedUsers),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               color:
@@ -34,13 +35,13 @@ class SavedUserView extends StatelessWidget {
 
             if (state.error != null && state.users.isEmpty) {
               return Center(
-                child: Text('Erro: ${state.error}'),
+                child: Text('${context.l10n.error}: ${state.error}'),
               );
             }
 
             if (state.users.isEmpty) {
-              return const Center(
-                child: Text('Nenhum usuário salvo'),
+              return Center(
+                child: Text(context.l10n.noUsersSaved),
               );
             }
 
@@ -57,7 +58,7 @@ class SavedUserView extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          _getUsersFoundCountText(state.users.length),
+                          context.l10n.savedUsersFound(state.users.length),
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -118,15 +119,13 @@ class SavedUserView extends StatelessWidget {
                                 final confirmed = await showDialog<bool>(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    title: const Text('Remover usuário'),
-                                    content: const Text(
-                                      'Tem certeza que deseja remover este usuário dos salvos?',
-                                    ),
+                                    title: Text(context.l10n.removeUser),
+                                    content: Text(context.l10n.confirmRemoveUserMessage),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.of(context).pop(false),
-                                        child: const Text('Cancelar'),
+                                        child: Text(context.l10n.cancel),
                                       ),
                                       TextButton(
                                         onPressed: () =>
@@ -135,7 +134,7 @@ class SavedUserView extends StatelessWidget {
                                           foregroundColor:
                                               AppColors.getErrorColor(context),
                                         ),
-                                        child: const Text('Remover'),
+                                        child: Text(context.l10n.remove),
                                       ),
                                     ],
                                   ),
@@ -148,7 +147,7 @@ class SavedUserView extends StatelessWidget {
                                   if (context.mounted) {
                                     CustomSnackBar.show(
                                       context,
-                                      message: 'Usuário removido com sucesso!',
+                                      message: context.l10n.userRemovedSuccess,
                                       type: SnackBarType.success,
                                     );
                                   }
@@ -169,10 +168,4 @@ class SavedUserView extends StatelessWidget {
     );
   }
 
-  String _getUsersFoundCountText(int count) {
-    if (count == 1) {
-      return '1 usuário salvo localmente';
-    }
-    return '$count usuários salvos localmente';
-  }
 }
